@@ -36,5 +36,14 @@ def games_id(request, id):
         return show_route(request, id)
 
 def show_route(request, id):
-    payload = serializers.serialize('json', Game.objects.filter(id=id))
-    return HttpResponse(payload, 'application/json')
+    game = Game.objects.filter(id=id)
+    if(len(game) != 0):
+        payload = serializers.serialize('json', game)
+        return HttpResponse(payload, 'application/json')
+    else:
+        return HttpResponse(status=404)
+
+def RecordViews():
+    @csrf_exempt
+    def record(request):
+        return JsonResponse({"out": hey})
