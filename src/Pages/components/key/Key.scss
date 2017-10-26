@@ -1,0 +1,10 @@
+.key-container{
+  display: inline-block;
+  padding: 0.5px 1px 1px 1px;
+  border: 1px solid black;
+
+  .inner-boarder{
+    border: 1px solid black;
+    padding: 4px;
+  }
+}
