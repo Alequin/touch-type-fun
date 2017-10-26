@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -10,6 +11,12 @@ import json
 
 from .models import Game, Record
 
+# Home Route
+@csrf_exempt
+def home_route(request):
+    return render(request, 'base.html')
+
+# Games Routes
 @csrf_exempt
 def games(request):
     if(request.method == 'GET'):
@@ -43,6 +50,7 @@ def get_one_game(request, id):
     else:
         return HttpResponse(status=404)
 
+#Record Routes
 @csrf_exempt
 def records(request):
     if(request.method == 'GET'):
