@@ -8,20 +8,20 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 import json
 
-from .models import Game
+from .models import Game, Record
 
 @csrf_exempt
 def games(request):
     if(request.method == 'GET'):
-        return index_route(request)
+        return get_all_games(request)
     if(request.method == 'POST'):
-        return create_route(request)
+        return new_game(request)
 
-def index_route(request):
+def get_all_games(request):
     payload = serializers.serialize('json', Game.objects.all())
     return HttpResponse(payload, 'application/json')
 
-def create_route(request):
+def new_game(request):
     data=json.loads(request.body)
     new_game = Game(
         title=data["title"], body=data["body"],
@@ -33,9 +33,9 @@ def create_route(request):
 @csrf_exempt
 def games_id(request, id):
     if(request.method == 'GET'):
-        return show_route(request, id)
+        return get_one_game(request, id)
 
-def show_route(request, id):
+def get_one_game(request, id):
     game = Game.objects.filter(id=id)
     if(len(game) != 0):
         payload = serializers.serialize('json', game)
@@ -43,7 +43,13 @@ def show_route(request, id):
     else:
         return HttpResponse(status=404)
 
-def RecordViews():
-    @csrf_exempt
-    def record(request):
-        return JsonResponse({"out": hey})
+@csrf_exempt
+def record(request):
+    if(request.method == 'GET'):
+        return get_all_records(request)
+    if(request.method == 'POST'):
+        return new_record(request)
+
+def get_all_records(request):
+    payload = serializers.serialize('json', Record.objects.all())
+    return HttpResponse(payload, 'application/json')
