@@ -1,7 +1,7 @@
 
 from django.conf.urls import url
-from .views import GameView
+from . import views
 
 urlpatterns = [
-    url(r'^', GameView.as_view(), name="games-index"),
+    url(r'^', views.index, name="games-index"),
 ]
