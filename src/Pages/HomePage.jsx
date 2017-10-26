@@ -1,6 +1,7 @@
 import React from 'react'
 import host from './../Host.js'
 
+import Keyboard from './components/keyboard'
 import css from "./HomePage.scss"
 
 class HomePage extends React.Component {
@@ -15,7 +16,12 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className="home-page-container">
+        <div className="frame keyboard-frame">
+          <Keyboard />
+        </div>
+        <div className="frame games-frame">
 
+        </div>
       </div>
     )
   }

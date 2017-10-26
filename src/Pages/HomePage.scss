@@ -1,4 +1,17 @@
+
 .home-page-container{
-  background-color: black;
-  height: 100px;
+  padding: 0 15%;
+
+  .frame{
+    margin: 30px;
+    background-color: black;
+  }
+
+  .keyboard-frame{
+    height: 200px;
+  }
+
+  .games-frame{
+    height: 300px;
+  }
 }
