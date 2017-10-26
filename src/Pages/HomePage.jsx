@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import host from './../Host.js'
 
 import css from "./HomePage.scss"
@@ -7,7 +6,7 @@ import css from "./HomePage.scss"
 class HomePage extends React.Component {
 
   componentDidMount(){
-    axios.get(host.route("/games"))
+    host.get("/games")
       .then((payload) => {
         console.log(payload);
       })
