@@ -22,3 +22,7 @@ class Game(models.Model):
     body = models.TextField()
     time_limit_seconds = models.PositiveIntegerField()
     difficulty = models.CharField(choices=DIFFICULTY)
+
+class Record(models.Model):
+    game = models.ForeignKey(Game, related_name='game')
+    completion_time_seconds = model.models.PositiveIntegerField()
