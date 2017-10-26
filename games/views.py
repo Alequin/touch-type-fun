@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from .models import Game
-
 from django.http import HttpResponse
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+from django.core import serializers
 import json
 
-from django.views.decorators.csrf import csrf_exempt
-from django.core import serializers
-
+from .models import Game
 
 @csrf_exempt
 def games(request):
@@ -30,3 +29,12 @@ def create_route(request):
     )
     new_game.save()
     return JsonResponse({"save": new_game.pk != None })
+
+@csrf_exempt
+def games_id(request, id):
+    if(request.method == 'GET'):
+        return show_route(request, id)
+
+def show_route(request, id):
+    payload = serializers.serialize('json', Game.objects.filter(id=id))
+    return HttpResponse(payload, 'application/json')
