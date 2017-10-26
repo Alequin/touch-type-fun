@@ -44,7 +44,7 @@ def get_one_game(request, id):
         return HttpResponse(status=404)
 
 @csrf_exempt
-def record(request):
+def records(request):
     if(request.method == 'GET'):
         return get_all_records(request)
     if(request.method == 'POST'):
@@ -53,3 +53,14 @@ def record(request):
 def get_all_records(request):
     payload = serializers.serialize('json', Record.objects.all())
     return HttpResponse(payload, 'application/json')
+
+def new_record(request):
+    data=json.loads(request.body)
+    if(Game.objects.filter(id=data["game_id"]).count() == 1):
+        new_record = Record(
+            game_id=data["game_id"], completion_time_seconds=data["completion_time_seconds"],
+        )
+        new_record.save()
+        return JsonResponse({"save": new_record.pk != None })
+    else:
+        return HttpResponse(status=404)
