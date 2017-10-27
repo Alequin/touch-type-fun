@@ -3,6 +3,7 @@ import React from 'react'
 
 import CharKey from './../key/charKey'
 import SpaceKey from './../key/spaceKey'
+import ShiftKey from './../key/shiftKey'
 import KeyboardHelper from "./KeyboardHelper"
 
 class Keyboard extends React.Component {
@@ -77,6 +78,7 @@ class Keyboard extends React.Component {
         {this.buildLetterKey("h")}
         {this.buildLetterKey("b")}
         <SpaceKey highlight={this.state.pressed[" "]} letter={"Space"} keyId={`key- "`}/>
+        <ShiftKey highlight={this.state.pressed["shift"]} letter={"Shift"} keyId={`key-shift"`}/>
       </div>
     )
   }
