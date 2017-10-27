@@ -7,42 +7,44 @@ class Keyboard extends React.Component {
 
   constructor(props){
     super(props)
-    this.setEventListener()
+    this.setEventListeners()
     this.state = {
-      pressed: {
-        shift: false,
-        a: false
-      }
+      pressed: {}
     }
   }
 
-  setEventListener(){
+  setEventListeners(){
     document.addEventListener('keydown', (event) => {
-      const key = event.key.toLowerCase()
+      const keyPressed = event.key
       let newState = Object.assign({}, this.state)
-      if(key === "shift") this.onShiftDown(newState)
-      newState.pressed[key] = true
+      if(keyPressed === "Shift") newState.pressed["shift"] = true
+
+      const stateKey = this.getStateKeyFromEvent(keyPressed)
+      newState.pressed[stateKey] = true
+      console.log(keyPressed);
       this.setState(newState)
     });
 
     document.addEventListener('keyup', (event) => {
-      console.log(event.key);
-      const key = event.key.toLowerCase()
+      const keyPressed = event.key
       const newState = Object.assign({}, this.state)
-      if(key === "shift") this.onShiftUp(newState)
-      newState.pressed[key] = false
+      if(keyPressed === "Shift") newState.pressed["shift"] = false
+
+      const stateKey = this.getStateKeyFromEvent(keyPressed)
+      newState.pressed[stateKey] = false
       this.setState(newState)
     });
   }
 
-  onShiftDown(state){
-    state.pressed["shift"] = true
-    this.setState(state)
-  }
-
-  onShiftUp(state){
-    state.pressed["shift"] = false
-    this.setState(state)
+  getStateKeyFromEvent(key){
+    key = key.toLowerCase()
+    const charCode = key.charCodeAt(0)
+    if((charCode < 97 || charCode > 123) && this.state.pressed["shift"]){
+      switch(key){
+        case "!": return "1"
+      }
+    }
+    return key
   }
 
   getLetter(char){
@@ -52,10 +54,20 @@ class Keyboard extends React.Component {
     return char
   }
 
+  getNumber(char){
+    if(this.state.pressed["shift"]){
+      switch(char){
+        case "1": return "!"
+      }
+    }
+    return char
+  }
+
   render() {
     return (
       <div className="keyboard-container">
-        <Key highlight={this.state.pressed["a"]} letter={this.getLetter("a")}/>
+        <Key highlight={this.state.pressed["1"]} letter={this.getNumber("1")} keyId={"num-1"}/>
+        <Key highlight={this.state.pressed["a"]} letter={this.getLetter("a")} keyId={"a"}/>
       </div>
     )
   }

@@ -25,7 +25,7 @@ class Key extends React.Component {
   render() {
     const style = this.getBorderStyles()
     return (
-      <div className="key-container" style={style}>
+      <div className={`key-container ${this.props.keyId}`} style={style}>
         <div className="inner-border">
           {this.props.letter}
         </div>
