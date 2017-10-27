@@ -1,10 +1,17 @@
 .key-container{
-  display: inline-block;
+  position: relative;
+  width: 18px;
+  height: 28px;
   padding: 0.5px 1px 1px 1px;
-  border: 1px solid black;
+  left: 30px;
+  z-index: -1;
 
-  .inner-boarder{
-    border: 1px solid black;
+  .inner-border{
+    position: absolute;
+    background-color: #d3d3d3;
+    z-index: 1;
     padding: 4px;
+    margin-left: 0.4px;
+    border: 1px solid black;
   }
 }
