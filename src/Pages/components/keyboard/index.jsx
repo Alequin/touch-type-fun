@@ -35,7 +35,11 @@ class Keyboard extends React.Component {
     const keyPressed = event.key
     const newState = Object.assign({}, this.state)
     const stateKey = this.getStateKeyFromEvent(keyPressed)
-    newState.pressed[stateKey] = isDown
+    if(stateKey === "shift"){
+      console.log("shift");
+    }else{
+      newState.pressed[stateKey] = isDown
+    }
     return newState
   }
 

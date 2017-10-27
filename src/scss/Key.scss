@@ -1,26 +1,28 @@
 @mixin basic-key-container() {
+  box-sizing: border-box;
   position: relative;
   z-index: -1;
+  padding: 0.5px 1px 1px 1px;
+  height: 29px;
 }
 
 @mixin basic-inner-border() {
+  box-sizing: border-box;
   position: absolute;
   z-index: 1;
   background-color: #d3d3d3;
   border: 1px solid black;
+  padding: 4px;
+  height: 25px;
 }
 
 .char-key-container{
   @include basic-key-container();
   width: 25px;
-  height: 28px;
-  padding: 0.5px 1px 1px 1px;
 
   .char-inner-border{
     @include basic-inner-border();
-    width: 15px;
-    height: 18px;
-    padding: 4px;
+    width: 21px;
     margin-left: 0.4px;
   }
 }
@@ -28,29 +30,22 @@
 .space-key-container{
   @include basic-key-container();
   width: 125px;
-  height: 28px;
-  padding: 0.5px 1px 1px 1px;
 
   .space-inner-border{
     @include basic-inner-border();
-    width: 115px;
-    height: 18px;
-    padding: 4px;
+    width: 121px;
     margin-left: 0.4px;
+    margin-top: 0.6px;
   }
 }
 
 .shift-key-container{
   @include basic-key-container();
   width: 50px;
-  height: 28px;
-  padding: 0.5px 1px 1px 1px;
 
   .shift-inner-border{
     @include basic-inner-border();
-    width: 40px;
-    height: 18px;
-    padding: 4px;
+    width: 46px;
     margin-left: 0.4px;
   }
 }
