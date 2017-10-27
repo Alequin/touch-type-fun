@@ -12,12 +12,16 @@ class Keyboard extends React.Component {
     super(props)
     this.setEventListeners()
     this.keyMap = KeyboardHelper.getGeneralKeyMap()
-    this.state = { pressed: {}}
+    this.state = {
+      shift: {pressed: false, count: 0},
+      pressed: {}
+    }
   }
 
   setEventListeners(){
     document.addEventListener('keydown', (event) => {
       const newState = this.buildNewState(event, true)
+      console.log(event.key);
       this.setState(newState)
     });
 
@@ -31,7 +35,6 @@ class Keyboard extends React.Component {
     const keyPressed = event.key
     const newState = Object.assign({}, this.state)
     const stateKey = this.getStateKeyFromEvent(keyPressed)
-    if(keyPressed === "Shift") newState.pressed["shift"] = isDown
     newState.pressed[stateKey] = isDown
     return newState
   }
@@ -78,7 +81,7 @@ class Keyboard extends React.Component {
         {this.buildLetterKey("h")}
         {this.buildLetterKey("b")}
         <SpaceKey highlight={this.state.pressed[" "]} letter={"Space"} keyId={`key- "`}/>
-        <ShiftKey highlight={this.state.pressed["shift"]} letter={"Shift"} keyId={`key-shift"`}/>
+        <ShiftKey highlight={this.state.pressed["shift"]} letter={"Shift"} keyId={`key-shift "`}/>
       </div>
     )
   }
