@@ -55,6 +55,8 @@ describe("Keyboard Helper", function(){
     expected["0"] = ")"
     expected[")"] = "0"
 
+    expected[" "] = " "
+
     assert.deepEqual(expected, KeyboardHelper.getGeneralKeyMap())
   })
 

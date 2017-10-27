@@ -50,6 +50,8 @@ KeyboardHelper.getGeneralKeyMap = function(){
 
   map["0"] = ")"
   map[")"] = "0"
+
+  map[" "] = " "
   return map
 }
 
