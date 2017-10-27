@@ -1,18 +1,41 @@
-.char-key-container{
+@mixin basic-key-container() {
   position: relative;
+  z-index: -1;
+}
+
+@mixin basic-inner-border() {
+  position: absolute;
+  z-index: 1;
+  background-color: #d3d3d3;
+  border: 1px solid black;
+}
+
+.char-key-container{
+  @include basic-key-container();
   width: 25px;
   height: 28px;
   padding: 0.5px 1px 1px 1px;
-  z-index: -1;
 
   .char-inner-border{
-    position: absolute;
+    @include basic-inner-border();
     width: 15px;
     height: 18px;
-    background-color: #d3d3d3;
-    z-index: 1;
     padding: 4px;
     margin-left: 0.4px;
-    border: 1px solid black;
+  }
+}
+
+.space-key-container{
+  @include basic-key-container();
+  width: 25px;
+  height: 28px;
+  padding: 0.5px 1px 1px 1px;
+
+  .space-inner-border{
+    @include basic-inner-border();
+    width: 15px;
+    height: 18px;
+    padding: 4px;
+    margin-left: 0.4px;
   }
 }
