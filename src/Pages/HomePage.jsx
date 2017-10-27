@@ -2,7 +2,6 @@ import React from 'react'
 import host from './../Host.js'
 
 import Keyboard from './components/keyboard'
-import css from "./HomePage.scss"
 
 class HomePage extends React.Component {
 

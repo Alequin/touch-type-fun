@@ -1,7 +1,5 @@
 import React from 'react'
 
-import css from './Key.scss'
-
 class Key extends React.Component {
 
   getBorderStyles(){

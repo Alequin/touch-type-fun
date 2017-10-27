@@ -1,7 +1,7 @@
+
 import React from 'react'
 
 import Key from './../key'
-import css from "./Keyboard.scss"
 
 class Keyboard extends React.Component {
 
