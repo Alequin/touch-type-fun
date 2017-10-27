@@ -12,7 +12,7 @@ class Keyboard extends React.Component {
     this.state = {
       letters: KeyboardHelper.getLowerCaseLetters(),
       pressed: {
-        Shift: false,
+        shift: false,
         a: false
       }
     }
@@ -20,17 +20,17 @@ class Keyboard extends React.Component {
 
   setEventListener(){
     document.addEventListener('keydown', (event) => {
-      const key = event.key
+      const key = event.key.toLowerCase()
       let newState = Object.assign({}, this.state)
-      if(key === "Shift") this.onShiftDown(newState)
+      if(key === "shift") this.onShiftDown(newState)
       newState.pressed[key] = true
       this.setState(newState)
     });
 
     document.addEventListener('keyup', (event) => {
-      const key = event.key
+      const key = event.key.toLowerCase()
       const newState = Object.assign({}, this.state)
-      if(key === "Shift") this.onShiftUp(newState)
+      if(key === "shift") this.onShiftUp(newState)
       newState.pressed[key] = false
       this.setState(newState)
     });
@@ -38,13 +38,13 @@ class Keyboard extends React.Component {
 
   onShiftDown(state){
     state.letters = KeyboardHelper.getUpperCaseLetters()
-    state.pressed["Shift"] = true
+    state.pressed["shift"] = true
     this.setState(state)
   }
 
   onShiftUp(state){
     state.letters = KeyboardHelper.getLowerCaseLetters()
-    state.pressed["Shift"] = false
+    state.pressed["shift"] = false
     this.setState(state)
   }
 
