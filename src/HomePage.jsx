@@ -1,5 +1,5 @@
 import React from 'react'
-import host from './../Host.js'
+import host from './Host.js'
 
 import Keyboard from './components/keyboard'
 

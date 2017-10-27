@@ -1,5 +1,5 @@
 import assert from "assert"
-import KeyboardHelper from "./../Pages/components/keyboard/KeyboardHelper"
+import KeyboardHelper from "./../components/keyboard/KeyboardHelper"
 
 describe("Keyboard Helper", function(){
 
