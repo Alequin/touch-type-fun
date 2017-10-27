@@ -13,29 +13,37 @@ class Key extends React.Component {
 
   getBorderStyles(){
     const outerStyle = {"border": "", "backgroundColor": ""}
+    const innerStyle = {"border": "", "backgroundColor": ""}
     if(this.props.highlight){
-      this.setHighlightedStyles(outerStyle)
+      this.setHighlightedStyles(outerStyle, innerStyle)
     }else{
-      this.setUnhighlightedStyles(outerStyle)
+      this.setUnhighlightedStyles(outerStyle, innerStyle)
     }
-    return outerStyle
+    return {outerStyle, innerStyle}
   }
 
   setHighlightedStyles(outer, inner){
-    outer.border = "1px solid green"
+    const border = "1px solid green"
+    outer.border = border
+    inner.border = border
     outer.backgroundColor = "green"
+    inner.backgroundColor = "rgba(255,255,255,0.5)"
   }
 
   setUnhighlightedStyles(outer, inner){
-    outer.border = "1px solid black"
-    outer.backgroundColor = "transparent"
+    const border = "1px solid black"
+    outer.border = border
+    inner.border = border
+    const bgColour = "#d3d3d3"
+    outer.backgroundColor = bgColour
+    inner.backgroundColor = bgColour
   }
 
   render() {
-    const style = this.getBorderStyles()
+    const { outerStyle, innerStyle} = this.getBorderStyles()
     return (
-      <div className={`${this.keyType}-key-container ${this.props.keyId}`} style={style}>
-        <div className={`${this.keyType}-inner-border`}>
+      <div className={`${this.keyType}-key-container ${this.props.keyId}`} style={outerStyle}>
+        <div className={`${this.keyType}-inner-border`} style={innerStyle}>
           {this.props.letter}
         </div>
       </div>

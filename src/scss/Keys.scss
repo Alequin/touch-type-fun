@@ -4,6 +4,7 @@
   z-index: -1;
   padding: 0.5px 1px 1px 1px;
   height: 34px;
+  border-radius: 5px;
 }
 
 @mixin basic-inner-border() {
@@ -11,8 +12,7 @@
   box-sizing: border-box;
   position: absolute;
   z-index: 1;
-  background-color: #d3d3d3;
-  border: 1px solid black;
+  border-radius: 5px;
   padding: 4px;
   height: 30px;
 }
