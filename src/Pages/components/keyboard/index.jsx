@@ -16,25 +16,23 @@ class Keyboard extends React.Component {
 
   setEventListeners(){
     document.addEventListener('keydown', (event) => {
-      const keyPressed = event.key
-      let newState = Object.assign({}, this.state)
-      if(keyPressed === "Shift") newState.pressed["shift"] = true
-
-      const stateKey = this.getStateKeyFromEvent(keyPressed)
-      newState.pressed[stateKey] = true
-      console.log(keyPressed);
+      const newState = this.buildNewState(event, true)
       this.setState(newState)
     });
 
     document.addEventListener('keyup', (event) => {
-      const keyPressed = event.key
-      const newState = Object.assign({}, this.state)
-      if(keyPressed === "Shift") newState.pressed["shift"] = false
-
-      const stateKey = this.getStateKeyFromEvent(keyPressed)
-      newState.pressed[stateKey] = false
+      const newState = this.buildNewState(event, false)
       this.setState(newState)
     });
+  }
+
+  buildNewState(event, isDown){
+    const keyPressed = event.key
+    const newState = Object.assign({}, this.state)
+    const stateKey = this.getStateKeyFromEvent(keyPressed)
+    if(keyPressed === "Shift") newState.pressed["shift"] = isDown
+    newState.pressed[stateKey] = isDown
+    return newState
   }
 
   getStateKeyFromEvent(key){
