@@ -27,13 +27,13 @@
 
 .space-key-container{
   @include basic-key-container();
-  width: 25px;
+  width: 125px;
   height: 28px;
   padding: 0.5px 1px 1px 1px;
 
   .space-inner-border{
     @include basic-inner-border();
-    width: 15px;
+    width: 115px;
     height: 18px;
     padding: 4px;
     margin-left: 0.4px;
