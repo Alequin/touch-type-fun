@@ -2,7 +2,6 @@
 import React from 'react'
 
 import Key from './../key'
-import KeyboardHelper from './KeyboardHelper'
 
 class Keyboard extends React.Component {
 
@@ -10,7 +9,6 @@ class Keyboard extends React.Component {
     super(props)
     this.setEventListener()
     this.state = {
-      letters: KeyboardHelper.getLowerCaseLetters(),
       pressed: {
         shift: false,
         a: false
@@ -28,6 +26,7 @@ class Keyboard extends React.Component {
     });
 
     document.addEventListener('keyup', (event) => {
+      console.log(event.key);
       const key = event.key.toLowerCase()
       const newState = Object.assign({}, this.state)
       if(key === "shift") this.onShiftUp(newState)
@@ -37,22 +36,26 @@ class Keyboard extends React.Component {
   }
 
   onShiftDown(state){
-    state.letters = KeyboardHelper.getUpperCaseLetters()
     state.pressed["shift"] = true
     this.setState(state)
   }
 
   onShiftUp(state){
-    state.letters = KeyboardHelper.getLowerCaseLetters()
     state.pressed["shift"] = false
     this.setState(state)
   }
 
-  render() {
+  getLetter(char){
+    if(this.state.pressed["shift"]){
+      return char.toUpperCase();
+    }
+    return char
+  }
 
+  render() {
     return (
       <div className="keyboard-container">
-        <Key highlight={this.state.pressed["a"]} letter={this.state.letters["a"]}/>
+        <Key highlight={this.state.pressed["a"]} letter={this.getLetter("a")}/>
       </div>
     )
   }
