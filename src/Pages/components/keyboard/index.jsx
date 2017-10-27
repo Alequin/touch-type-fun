@@ -36,7 +36,13 @@ class Keyboard extends React.Component {
     const newState = Object.assign({}, this.state)
     const stateKey = this.getStateKeyFromEvent(keyPressed)
     if(stateKey === "shift"){
-      console.log("shift");
+      let numPressed = null
+      if(isDown){
+        numPressed = ++newState.shift.count
+      }else{
+        numPressed = --newState.shift.count
+      }
+      newState.shift.pressed = numPressed > 0
     }else{
       newState.pressed[stateKey] = isDown
     }
@@ -46,21 +52,21 @@ class Keyboard extends React.Component {
   getStateKeyFromEvent(key){
     key = key.toLowerCase()
     const charCode = key.charCodeAt(0)
-    if((charCode < 97 || charCode > 123) && this.state.pressed["shift"]){
+    if((charCode < 97 || charCode > 123) && this.state.shift.pressed){
       return this.keyMap[key]
     }
     return key
   }
 
   getLetter(char){
-    if(this.state.pressed["shift"]){
+    if(this.state.shift.pressed){
       return char.toUpperCase();
     }
     return char
   }
 
   getSpecialChar(char){
-    if(this.state.pressed["shift"]){
+    if(this.state.shift.pressed){
       return this.keyMap[char]
     }
     return char
@@ -85,7 +91,7 @@ class Keyboard extends React.Component {
         {this.buildLetterKey("h")}
         {this.buildLetterKey("b")}
         <SpaceKey highlight={this.state.pressed[" "]} letter={"Space"} keyId={`key- `}/>
-        <ShiftKey highlight={this.state.pressed["shift"]} letter={"Shift"} keyId="key-shift"/>
+        <ShiftKey highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>
       </div>
     )
   }
