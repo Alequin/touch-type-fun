@@ -98,12 +98,14 @@ class Keyboard extends React.Component {
         {this.buildLetterKey("g")}
         {this.buildLetterKey("h")}
         {this.buildLetterKey("b")}
-        <SpaceKey highlight={this.state.pressed[" "]} letter={"Space"} keyId={`key- `}/>
-        <ShiftKey highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>
-        <BackSpaceKey highlight={this.state.pressed["backspace"]} letter={"Back"} keyId="key-back-space"/>
+        <SpaceKey highlight={this.state.pressed[" "]} letter={"Space"} keyId={`key-space`}/>
       </div>
     )
   }
 }
 
 export default Keyboard;
+
+// shift and back key working code
+{/* <ShiftKey highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>
+<BackSpaceKey highlight={this.state.pressed["backspace"]} letter={"Back"} keyId="key-back-space"/> */}

@@ -3,37 +3,38 @@
   position: relative;
   z-index: -1;
   padding: 0.5px 1px 1px 1px;
-  height: 29px;
+  height: 34px;
 }
 
 @mixin basic-inner-border() {
+  font-family: verdana;
   box-sizing: border-box;
   position: absolute;
   z-index: 1;
   background-color: #d3d3d3;
   border: 1px solid black;
   padding: 4px;
-  height: 25px;
+  height: 30px;
 }
 
 .char-key-container{
   @include basic-key-container();
-  width: 25px;
+  width: 34px;
 
   .char-inner-border{
     @include basic-inner-border();
-    width: 21px;
+    width: 30px;
     margin-left: 0.4px;
   }
 }
 
 .space-key-container{
   @include basic-key-container();
-  width: 125px;
+  width: 150px;
 
   .space-inner-border{
     @include basic-inner-border();
-    width: 121px;
+    width: 146px;
     margin-left: 0.4px;
     margin-top: 0.6px;
   }
