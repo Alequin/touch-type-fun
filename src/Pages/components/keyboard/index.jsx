@@ -2,12 +2,14 @@
 import React from 'react'
 
 import Key from './../key'
+import KeyboardHelper from "./KeyboardHelper"
 
 class Keyboard extends React.Component {
 
   constructor(props){
     super(props)
     this.setEventListeners()
+    this.keyMap = KeyboardHelper.getGeneralKeyMap()
     this.state = {
       pressed: {}
     }
@@ -40,9 +42,7 @@ class Keyboard extends React.Component {
     key = key.toLowerCase()
     const charCode = key.charCodeAt(0)
     if((charCode < 97 || charCode > 123) && this.state.pressed["shift"]){
-      switch(key){
-        case "!": return "1"
-      }
+      return this.keyMap[key]
     }
     return key
   }
@@ -56,9 +56,7 @@ class Keyboard extends React.Component {
 
   getNumber(char){
     if(this.state.pressed["shift"]){
-      switch(char){
-        case "1": return "!"
-      }
+      return this.keyMap[char]
     }
     return char
   }

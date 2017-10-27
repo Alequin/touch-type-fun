@@ -19,4 +19,11 @@ KeyboardHelper.getUpperCaseLetters = function(){
   return letters
 }
 
+KeyboardHelper.getGeneralKeyMap = function(){
+  const map = {}
+  map["1"] = "!"
+  map["!"] = "1"
+  return map
+}
+
 export default KeyboardHelper
