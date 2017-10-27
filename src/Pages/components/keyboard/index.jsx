@@ -4,6 +4,7 @@ import React from 'react'
 import CharKey from './../key/charKey'
 import SpaceKey from './../key/spaceKey'
 import ShiftKey from './../key/shiftKey'
+import BackSpaceKey from './../key/backSpaceKey'
 import KeyboardHelper from "./KeyboardHelper"
 
 class Keyboard extends React.Component {
@@ -36,17 +37,18 @@ class Keyboard extends React.Component {
     const newState = Object.assign({}, this.state)
     const stateKey = this.getStateKeyFromEvent(keyPressed)
     if(stateKey === "shift"){
-      let numPressed = null
-      if(isDown){
-        numPressed = ++newState.shift.count
-      }else{
-        numPressed = --newState.shift.count
-      }
-      newState.shift.pressed = numPressed > 0
+      this.setShiftState(newState, isDown)
     }else{
       newState.pressed[stateKey] = isDown
     }
     return newState
+  }
+
+  setShiftState(newState, isDown){
+    let numPressed = null
+    if(isDown) numPressed = ++newState.shift.count
+    else numPressed = --newState.shift.count
+    newState.shift.pressed = numPressed > 0
   }
 
   getStateKeyFromEvent(key){
@@ -74,13 +76,19 @@ class Keyboard extends React.Component {
 
   buildLetterKey(char){
     return (
-      <CharKey highlight={this.state.pressed[char]} letter={this.getLetter(char)} keyId={`key-${char}`}/>
+      <CharKey
+        highlight={this.state.pressed[char]}
+        letter={this.getLetter(char)}
+        keyId={`key-${char}`}/>
     )
   }
 
   buildSpecialKey(char){
     return (
-      <CharKey highlight={this.state.pressed[char]} letter={this.getSpecialChar(char)} keyId={`key-${char}`}/>
+      <CharKey
+        highlight={this.state.pressed[char]}
+        letter={this.getSpecialChar(char)}
+        keyId={`key-${char}`}/>
     )
   }
 
@@ -92,6 +100,7 @@ class Keyboard extends React.Component {
         {this.buildLetterKey("b")}
         <SpaceKey highlight={this.state.pressed[" "]} letter={"Space"} keyId={`key- `}/>
         <ShiftKey highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>
+        <BackSpaceKey highlight={this.state.pressed["backspace"]} letter={"Back"} keyId="key-back-space"/>
       </div>
     )
   }

@@ -49,3 +49,14 @@
     margin-left: 0.4px;
   }
 }
+
+.back-space-key-container{
+  @include basic-key-container();
+  width: 48px;
+
+  .back-space-inner-border{
+    @include basic-inner-border();
+    width: 44px;
+    margin-left: 0.4px;
+  }
+}
