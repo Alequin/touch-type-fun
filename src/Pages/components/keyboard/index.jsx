@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import Key from './../key'
+import CharKey from './../key/charKey'
 import KeyboardHelper from "./KeyboardHelper"
 
 class Keyboard extends React.Component {
@@ -61,13 +61,13 @@ class Keyboard extends React.Component {
 
   buildLetterKey(char){
     return (
-      <Key highlight={this.state.pressed[char]} letter={this.getLetter(char)} keyId={`key-${char}`}/>
+      <CharKey highlight={this.state.pressed[char]} letter={this.getLetter(char)} keyId={`key-${char}`}/>
     )
   }
 
   buildSpecialKey(char){
     return (
-      <Key highlight={this.state.pressed[char]} letter={this.getSpecialChar(char)} keyId={`key-${char}`}/>
+      <CharKey highlight={this.state.pressed[char]} letter={this.getSpecialChar(char)} keyId={`key-${char}`}/>
     )
   }
 

@@ -2,6 +2,15 @@ import React from 'react'
 
 class Key extends React.Component {
 
+  constructor(props){
+    super(props)
+    this.keyType = "abstract"
+  }
+
+  setKeyType(type){
+    this.keyType = type
+  }
+
   getBorderStyles(){
     const outerStyle = {"border": "", "backgroundColor": ""}
     if(this.props.highlight){
@@ -25,8 +34,8 @@ class Key extends React.Component {
   render() {
     const style = this.getBorderStyles()
     return (
-      <div className={`key-container ${this.props.keyId}`} style={style}>
-        <div className="inner-border">
+      <div className={`${this.keyType}-key-container ${this.props.keyId}`} style={style}>
+        <div className={`${this.keyType}-inner-border`}>
           {this.props.letter}
         </div>
       </div>
