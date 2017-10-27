@@ -1,18 +1,21 @@
 
 function KeyboardHelper(){}
 
-KeyboardHelper.getLetters = function(isCapital){
+KeyboardHelper.getLowerCaseLetters = function(){
   let letters = {}
-  if(!isCapital){
-    for(let j=0; j<26; j++){
-      const letter = String.fromCharCode(97+j)
-      console.log("here, ", letter);
-      letters[letter] = letter
-    }
-  }else{
-
+  for(let j=0; j<26; j++){
+    const letter = String.fromCharCode(97+j)
+    letters[letter] = letter
   }
+  return letters
+}
 
+KeyboardHelper.getUpperCaseLetters = function(){
+  let letters = {}
+  for(let j=0; j<26; j++){
+    const letter = String.fromCharCode(97+j)
+    letters[letter] = letter.toUpperCase()
+  }
   return letters
 }
 
