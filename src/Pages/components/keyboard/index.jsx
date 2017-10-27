@@ -10,9 +10,7 @@ class Keyboard extends React.Component {
     super(props)
     this.setEventListeners()
     this.keyMap = KeyboardHelper.getGeneralKeyMap()
-    this.state = {
-      pressed: {}
-    }
+    this.state = { pressed: {}}
   }
 
   setEventListeners(){
@@ -54,18 +52,31 @@ class Keyboard extends React.Component {
     return char
   }
 
-  getNumber(char){
+  getSpecialChar(char){
     if(this.state.pressed["shift"]){
       return this.keyMap[char]
     }
     return char
   }
 
+  buildLetterKey(char){
+    return (
+      <Key highlight={this.state.pressed[char]} letter={this.getLetter(char)} keyId={`key-${char}`}/>
+    )
+  }
+
+  buildSpecialKey(char){
+    return (
+      <Key highlight={this.state.pressed[char]} letter={this.getSpecialChar(char)} keyId={`key-${char}`}/>
+    )
+  }
+
   render() {
     return (
       <div className="keyboard-container">
-        <Key highlight={this.state.pressed["1"]} letter={this.getNumber("1")} keyId={"num-1"}/>
-        <Key highlight={this.state.pressed["a"]} letter={this.getLetter("a")} keyId={"a"}/>
+        {this.buildLetterKey("g")}
+        {this.buildLetterKey("h")}
+        {this.buildLetterKey("b")}
       </div>
     )
   }

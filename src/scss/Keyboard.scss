@@ -1,10 +1,19 @@
 .keyboard-container{
-  .a{
-    left: 100px;
+  width: 0;
+  margin: 0 50%;
+  height: 100%;
+
+  .key-h{
+    left: 0px;
     top: 50px;
   }
 
-  // .num-1{
-  //   left: 100px;
-  // }
+  .key-g{
+    left: -40px;
+    top: 81px;
+  }
+
+  .key-b{
+    top: 50px;
+  }
 }
