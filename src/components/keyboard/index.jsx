@@ -71,6 +71,13 @@ class Keyboard extends React.Component {
     )
   }
 
+  buildLetterKeyElements(letters){
+    const keys = letters.map((char) => {
+      return this.buildLetterKey(char)
+    })
+    return keys
+  }
+
   buildSpecialKey(char){
     return (
       <CharKey
@@ -79,6 +86,13 @@ class Keyboard extends React.Component {
         highlight={this.state.pressed[char]}
         letter={this.getSpecialChar(char)}/>
     )
+  }
+
+  buildSpecialKeyElements(specialChars){
+    const keys = specialChars.map((char) => {
+      return this.buildLetterKey(char)
+    })
+    return keys
   }
 
   getLetter(char){
@@ -105,9 +119,7 @@ class Keyboard extends React.Component {
 
   renderRowTwo(){
     const keyChars = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]
-    const keys = keyChars.map((keyChar) => {
-      return this.buildLetterKey(keyChar)
-    })
+    const keys = this.buildLetterKeyElements(keyChars)
     const specialChars = ["[", "]"]
     const specialKeys = specialChars.map((specialChar) => {
       return this.buildSpecialKey(specialChar)
@@ -117,9 +129,7 @@ class Keyboard extends React.Component {
 
   renderRowThree(){
     const keyChars = ["a", "s", "d", "f", "g", "h", "j", "k", "l"]
-    const keys = keyChars.map((keyChar) => {
-      return this.buildLetterKey(keyChar)
-    })
+    const keys = this.buildLetterKeyElements(keyChars)
     const specialChars = [";", "'", "\\"]
     const specialKeys = specialChars.map((specialChar) => {
       return this.buildSpecialKey(specialChar)
