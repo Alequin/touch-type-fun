@@ -37,7 +37,6 @@ class Keyboard extends React.Component {
     const keyPressed = event.key
     const newState = Object.assign({}, this.state)
     const stateKey = this.getStateKeyFromEvent(keyPressed)
-
     if(stateKey === "shift"){
       this.setShiftState(newState, isKeyDown)
     }else{
@@ -97,7 +96,7 @@ class Keyboard extends React.Component {
   }
 
   renderRowOne(){
-    const keyChars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+    const keyChars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="]
     const keys = keyChars.map((keyChar) => {
       return this.buildSpecialKey(keyChar)
     })
@@ -109,7 +108,11 @@ class Keyboard extends React.Component {
     const keys = keyChars.map((keyChar) => {
       return this.buildLetterKey(keyChar)
     })
-    return this.renderRow(keys)
+    const specialChars = ["[", "]"]
+    const specialKeys = specialChars.map((specialChar) => {
+      return this.buildSpecialKey(specialChar)
+    })
+    return this.renderRow(keys.concat(specialKeys), "row-two")
   }
 
   renderRowThree(){
@@ -117,7 +120,11 @@ class Keyboard extends React.Component {
     const keys = keyChars.map((keyChar) => {
       return this.buildLetterKey(keyChar)
     })
-    return this.renderRow(keys)
+    const specialChars = [";", "'", "\\"]
+    const specialKeys = specialChars.map((specialChar) => {
+      return this.buildSpecialKey(specialChar)
+    })
+    return this.renderRow(keys.concat(specialKeys), "row-three")
   }
 
   renderRowFour(){
@@ -127,7 +134,11 @@ class Keyboard extends React.Component {
     for(let key of keyChars){
       keys.push(this.buildLetterKey(key))
     }
-    return this.renderRow(keys)
+    const specialChars = [",", ".", "/"]
+    const specialKeys = specialChars.map((specialChar) => {
+      return this.buildSpecialKey(specialChar)
+    })
+    return this.renderRow(keys.concat(specialKeys), "row-four")
   }
 
   renderRowFive(){
@@ -136,9 +147,9 @@ class Keyboard extends React.Component {
     )
   }
 
-  renderRow(content){
+  renderRow(content, rowClass = "unstatedRow"){
     return (
-      <div className="row">
+      <div className={`row ${rowClass}`}>
         {content}
       </div>
     )
