@@ -65,18 +65,20 @@ class Keyboard extends React.Component {
   buildLetterKey(char){
     return (
       <CharKey
+        key={char}
+        keyId={`key-${char}`}
         highlight={this.state.pressed[char]}
-        letter={this.getLetter(char)}
-        keyId={`key-${char}`}/>
+        letter={this.getLetter(char)}/>
     )
   }
 
   buildSpecialKey(char){
     return (
       <CharKey
+        key={char}
+        keyId={`key-${char}`}
         highlight={this.state.pressed[char]}
-        letter={this.getSpecialChar(char)}
-        keyId={`key-${char}`}/>
+        letter={this.getSpecialChar(char)}/>
     )
   }
 
@@ -94,12 +96,63 @@ class Keyboard extends React.Component {
     return char
   }
 
+  renderRowOne(){
+    const keyChars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+    const keys = keyChars.map((keyChar) => {
+      return this.buildSpecialKey(keyChar)
+    })
+    return this.renderRow(keys)
+  }
+
+  renderRowTwo(){
+    const keyChars = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]
+    const keys = keyChars.map((keyChar) => {
+      return this.buildLetterKey(keyChar)
+    })
+    return this.renderRow(keys)
+  }
+
+  renderRowThree(){
+    const keyChars = ["a", "s", "d", "f", "g", "h", "j", "k", "l"]
+    const keys = keyChars.map((keyChar) => {
+      return this.buildLetterKey(keyChar)
+    })
+    return this.renderRow(keys)
+  }
+
+  renderRowFour(){
+    const keyChars = ["z", "x", "c", "v", "b", "n", "m"]
+    const shift = (<ShiftKey key={"shift"} highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>)
+    let keys = [shift]
+    for(let key of keyChars){
+      keys.push(this.buildLetterKey(key))
+    }
+    return this.renderRow(keys)
+  }
+
+  renderRowFive(){
+    return this.renderRow(
+      <SpaceKey highlight={this.state.pressed[" "]} letter={"Space"} key={`key-space`}/>
+    )
+  }
+
+  renderRow(content){
+    return (
+      <div className="row">
+        {content}
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className="keyboard-container">
+        {this.renderRowOne()}
+        {this.renderRowTwo()}
+        {this.renderRowThree()}
+        {this.renderRowFour()}
+        {this.renderRowFive()}
         <div className="row">
-          {this.buildLetterKey("g")}
-          {this.buildLetterKey("h")}
         </div>
       </div>
     )
@@ -109,9 +162,9 @@ class Keyboard extends React.Component {
 export default Keyboard;
 
 
-// {this.buildLetterKey("b")}
-// <SpaceKey highlight={this.state.pressed[" "]} letter={"Space"} keyId={`key-space`}/>
+//
+//
 
 // shift and back key working code
-{/* <ShiftKey highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>
+{/*
 <BackSpaceKey highlight={this.state.pressed["backspace"]} letter={"Back"} keyId="key-back-space"/> */}
