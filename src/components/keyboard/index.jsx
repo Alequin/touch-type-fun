@@ -112,7 +112,8 @@ class Keyboard extends React.Component {
   renderRowOne(){
     const keyChars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="]
     const keys = this.buildSpecialKeyElements(keyChars)
-    return this.renderRow(keys)
+    keys.push(<BackSpaceKey key={"backpace"} highlight={this.state.pressed["backspace"]} letter={"Back"} keyId="key-back-space"/>)
+    return this.renderRow(keys, "row-one")
   }
 
   renderRowTwo(){
@@ -174,11 +175,3 @@ class Keyboard extends React.Component {
 }
 
 export default Keyboard;
-
-
-//
-//
-
-// shift and back key working code
-{/*
-<BackSpaceKey highlight={this.state.pressed["backspace"]} letter={"Back"} keyId="key-back-space"/> */}
