@@ -52,6 +52,44 @@ KeyboardHelper.getGeneralKeyMap = function(){
   map[")"] = "0"
 
   map[" "] = " "
+
+  map["-"] = "_"
+  map["_"] = "-"
+
+  map["="] = "+"
+  map["+"] = "="
+
+  map["["] = "{"
+  map["}"] = "["
+
+  map["]"] = "}"
+  map["}"] = "]"
+
+  map[";"] = ":"
+  map[":"] = ";"
+
+  map["'"] = "\""
+  map["\""] = "'"
+
+  map["\\"] = "|"
+  map["|"] = "\\"
+
+  map[","] = "<"
+  map["<"] = ","
+
+  map["."] = ">"
+  map[">"] = "."
+
+  map["/"] = "?"
+  map["?"] = "/"
+
+  map["`"] = "~"
+  map["~"] = "`"
+
+  map["ArrowLeft"] = "ArrowLeft"
+  map["ArrowRight"] = "ArrowRight"
+  map["ArrowUp"] = "ArrowUp"
+  map["ArrowDown"] = "ArrowDown"
   return map
 }
 

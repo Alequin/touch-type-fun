@@ -57,6 +57,44 @@ describe("Keyboard Helper", function(){
 
     expected[" "] = " "
 
+    expected["-"] = "_"
+    expected["_"] = "-"
+
+    expected["="] = "+"
+    expected["+"] = "="
+
+    expected["["] = "{"
+    expected["}"] = "["
+
+    expected["]"] = "}"
+    expected["}"] = "]"
+
+    expected[";"] = ":"
+    expected[":"] = ";"
+
+    expected["'"] = "\""
+    expected["\""] = "'"
+
+    expected["\\"] = "|"
+    expected["|"] = "\\"
+
+    expected[","] = "<"
+    expected["<"] = ","
+
+    expected["."] = ">"
+    expected[">"] = "."
+
+    expected["/"] = "?"
+    expected["?"] = "/"
+
+    expected["`"] = "~"
+    expected["~"] = "`"
+
+    expected["ArrowLeft"] = "ArrowLeft"
+    expected["ArrowRight"] = "ArrowRight"
+    expected["ArrowUp"] = "ArrowUp"
+    expected["ArrowDown"] = "ArrowDown"
+
     assert.deepEqual(expected, KeyboardHelper.getGeneralKeyMap())
   })
 
