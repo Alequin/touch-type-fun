@@ -55,10 +55,10 @@ class Keyboard extends React.Component {
   }
 
   setShiftState(newState, isDown){
-    let numPressed = null
-    if(isDown) numPressed = ++newState.shift.count
-    else numPressed = --newState.shift.count
-    newState.shift.pressed = numPressed > 0
+    if( !(newState.shift.pressed && isDown) ){
+      let numPressed = null
+      newState.shift.pressed = isDown
+    }
   }
 
   buildLetterKey(char){
@@ -90,7 +90,7 @@ class Keyboard extends React.Component {
 
   buildSpecialKeyElements(specialChars){
     const keys = specialChars.map((char) => {
-      return this.buildLetterKey(char)
+      return this.buildSpecialKey(char)
     })
     return keys
   }
@@ -111,9 +111,7 @@ class Keyboard extends React.Component {
 
   renderRowOne(){
     const keyChars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="]
-    const keys = keyChars.map((keyChar) => {
-      return this.buildSpecialKey(keyChar)
-    })
+    const keys = this.buildSpecialKeyElements(keyChars)
     return this.renderRow(keys)
   }
 
@@ -121,9 +119,7 @@ class Keyboard extends React.Component {
     const keyChars = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]
     const keys = this.buildLetterKeyElements(keyChars)
     const specialChars = ["[", "]"]
-    const specialKeys = specialChars.map((specialChar) => {
-      return this.buildSpecialKey(specialChar)
-    })
+    const specialKeys = this.buildSpecialKeyElements(specialChars)
     return this.renderRow(keys.concat(specialKeys), "row-two")
   }
 
@@ -131,24 +127,23 @@ class Keyboard extends React.Component {
     const keyChars = ["a", "s", "d", "f", "g", "h", "j", "k", "l"]
     const keys = this.buildLetterKeyElements(keyChars)
     const specialChars = [";", "'", "\\"]
-    const specialKeys = specialChars.map((specialChar) => {
-      return this.buildSpecialKey(specialChar)
-    })
+    const specialKeys = this.buildSpecialKeyElements(specialChars)
     return this.renderRow(keys.concat(specialKeys), "row-three")
   }
 
   renderRowFour(){
     const keyChars = ["z", "x", "c", "v", "b", "n", "m"]
-    const shift = (<ShiftKey key={"shift"} highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>)
-    let keys = [shift]
+    const leftShift = (<ShiftKey key={"shift-l"} highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>)
+    let keys = [leftShift]
     for(let key of keyChars){
       keys.push(this.buildLetterKey(key))
     }
     const specialChars = [",", ".", "/"]
-    const specialKeys = specialChars.map((specialChar) => {
-      return this.buildSpecialKey(specialChar)
-    })
-    return this.renderRow(keys.concat(specialKeys), "row-four")
+    const specialKeys = this.buildSpecialKeyElements(specialChars)
+    const rightShift = (<ShiftKey key={"shift-r"} highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>)
+    const row = keys.concat(specialKeys)
+    row.push(rightShift)
+    return this.renderRow(row, "row-four")
   }
 
   renderRowFive(){
