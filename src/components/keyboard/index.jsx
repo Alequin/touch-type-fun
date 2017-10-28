@@ -21,34 +21,29 @@ class Keyboard extends React.Component {
 
   setEventListeners(){
     document.addEventListener('keydown', (event) => {
-      const newState = this.buildNewState(event, true)
+      const newState = this.buildNewState(event)
       console.log(event.key);
       this.setState(newState)
     });
 
     document.addEventListener('keyup', (event) => {
-      const newState = this.buildNewState(event, false)
+      const newState = this.buildNewState(event)
       this.setState(newState)
     });
   }
 
-  buildNewState(event, isDown){
+  buildNewState(event){
+    const isKeyDown = event.type === 'keydown'
     const keyPressed = event.key
     const newState = Object.assign({}, this.state)
     const stateKey = this.getStateKeyFromEvent(keyPressed)
+
     if(stateKey === "shift"){
-      this.setShiftState(newState, isDown)
+      this.setShiftState(newState, isKeyDown)
     }else{
-      newState.pressed[stateKey] = isDown
+      newState.pressed[stateKey] = isKeyDown
     }
     return newState
-  }
-
-  setShiftState(newState, isDown){
-    let numPressed = null
-    if(isDown) numPressed = ++newState.shift.count
-    else numPressed = --newState.shift.count
-    newState.shift.pressed = numPressed > 0
   }
 
   getStateKeyFromEvent(key){
@@ -60,18 +55,11 @@ class Keyboard extends React.Component {
     return key
   }
 
-  getLetter(char){
-    if(this.state.shift.pressed){
-      return char.toUpperCase();
-    }
-    return char
-  }
-
-  getSpecialChar(char){
-    if(this.state.shift.pressed){
-      return this.keyMap[char]
-    }
-    return char
+  setShiftState(newState, isDown){
+    let numPressed = null
+    if(isDown) numPressed = ++newState.shift.count
+    else numPressed = --newState.shift.count
+    newState.shift.pressed = numPressed > 0
   }
 
   buildLetterKey(char){
@@ -90,6 +78,20 @@ class Keyboard extends React.Component {
         letter={this.getSpecialChar(char)}
         keyId={`key-${char}`}/>
     )
+  }
+
+  getLetter(char){
+    if(this.state.shift.pressed){
+      return char.toUpperCase();
+    }
+    return char
+  }
+
+  getSpecialChar(char){
+    if(this.state.shift.pressed){
+      return this.keyMap[char]
+    }
+    return char
   }
 
   render() {
