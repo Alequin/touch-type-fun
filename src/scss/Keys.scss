@@ -53,11 +53,11 @@
 
 .back-space-key-container{
   @include basic-key-container();
-  width: 48px;
+  width: 50px;
 
   .back-space-inner-border{
     @include basic-inner-border();
-    width: 44px;
+    width: 46px;
     margin-left: 0.4px;
   }
 }
