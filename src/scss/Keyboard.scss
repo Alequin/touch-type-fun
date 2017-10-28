@@ -1,25 +1,7 @@
 .keyboard-container{
-  width: 0;
-  margin: 0 50%;
   height: 100%;
-
-  .key-h{
-    left: -1px;
-    top: 45px;
-  }
-
-  .key-g{
-    left: -39px;
-    top: 79px;
-  }
-
-  .key-b{
-    top: 50px;
-    left: -20px;
-  }
-
-  .key-space{
-    top: 55px;
-    left: -75px;
+  .row{
+    display: flex;
+    justify-content: center;
   }
 }

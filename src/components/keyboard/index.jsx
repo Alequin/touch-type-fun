@@ -95,16 +95,20 @@ class Keyboard extends React.Component {
   render() {
     return (
       <div className="keyboard-container">
-        {this.buildLetterKey("g")}
-        {this.buildLetterKey("h")}
-        {this.buildLetterKey("b")}
-        <SpaceKey highlight={this.state.pressed[" "]} letter={"Space"} keyId={`key-space`}/>
+        <div className="row">
+          {this.buildLetterKey("g")}
+          {this.buildLetterKey("h")}
+        </div>
       </div>
     )
   }
 }
 
 export default Keyboard;
+
+
+// {this.buildLetterKey("b")}
+// <SpaceKey highlight={this.state.pressed[" "]} letter={"Space"} keyId={`key-space`}/>
 
 // shift and back key working code
 {/* <ShiftKey highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>
