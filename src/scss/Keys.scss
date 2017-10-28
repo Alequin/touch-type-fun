@@ -42,11 +42,11 @@
 
 .shift-key-container{
   @include basic-key-container();
-  width: 50px;
+  width: 55px;
 
   .shift-inner-border{
     @include basic-inner-border();
-    width: 46px;
+    width: 51px;
     margin-left: 0.4px;
   }
 }

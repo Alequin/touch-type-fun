@@ -152,8 +152,6 @@ class Keyboard extends React.Component {
         {this.renderRowThree()}
         {this.renderRowFour()}
         {this.renderRowFive()}
-        <div className="row">
-        </div>
       </div>
     )
   }
