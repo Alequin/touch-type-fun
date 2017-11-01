@@ -14,7 +14,7 @@ class MenuBar extends React.Component {
   buildInitalState(options){
     const state = {}
     for(let index in options){
-      state[options[index]] = index === 0
+      state[options[index]] = index == 0
     }
     return state
   }
@@ -24,7 +24,7 @@ class MenuBar extends React.Component {
     let key = 0
     for(let option of this.props.options){
       const text = StringHelper.capitalise(option)
-      options.push(<MenuOption key={key++} text={text} highlighted={this.state.option}/>)
+      options.push(<MenuOption key={key++} text={text} highlighted={this.state[option]}/>)
     }
     return options
   }
