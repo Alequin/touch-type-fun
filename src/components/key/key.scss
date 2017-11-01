@@ -10,6 +10,7 @@
 @mixin basic-inner-border() {
   font-family: roboto-mono;
   box-sizing: border-box;
+  text-align: center;
   position: relative;
   z-index: 1;
   border-radius: 5px;
