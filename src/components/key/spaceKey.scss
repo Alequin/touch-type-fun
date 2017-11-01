@@ -1,0 +1,13 @@
+@import './key.scss';
+
+.space-key-container{
+  @include basic-key-container();
+  width: 150px;
+
+  .space-inner-border{
+    @include basic-inner-border();
+    width: 146px;
+    margin-left: 0.4px;
+    margin-top: 0.6px;
+  }
+}

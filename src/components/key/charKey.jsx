@@ -1,5 +1,6 @@
 import React from 'react'
 import Key from './key'
+import css from './charKey.scss'
 
 class CharKey extends Key {
   constructor(props){

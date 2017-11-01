@@ -10,6 +10,7 @@ class HomePage extends React.Component {
                         edges{
                           node{
                             id
+                            title
                           }
                         }
                       }
