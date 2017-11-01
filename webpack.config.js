@@ -4,7 +4,7 @@
 const config = {
 	entry: "./src/Main.js",
 	output: {
-		path: `${__dirname}/games/static/games`,
+		path: `${__dirname}/touch_type/games/static/games`,
 		filename: 'MainBundle.js'
 	},
 	stats: {

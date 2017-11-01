@@ -1,16 +1,8 @@
 import React from 'react'
-import host from './Host.js'
 
 import Keyboard from './components/keyboard'
 
 class HomePage extends React.Component {
-
-  componentDidMount(){
-    host.get("/games")
-      .then((payload) => {
-        console.log(payload);
-      })
-  }
 
   render() {
     return (
