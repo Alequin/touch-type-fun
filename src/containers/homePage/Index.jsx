@@ -1,9 +1,10 @@
 import React from "react"
+
 import GraphQlQueryBuilder from "./../../util/graphql/GraphQlQueryBuilder"
 import makeRequest from "./../../util/graphql/GraphQlRequester"
+import gameTypes from "./../../util/gameTypes"
 
 import gameViewPages from "./gameViewPages"
-import gameTypes from "./../../util/gameTypes"
 import SelectorView from "./../selectorView"
 import Keyboard from "./../keyboard"
 
