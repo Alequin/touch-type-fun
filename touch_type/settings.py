@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u)(i9fvc+3s3+60sl&52!mfo$13l388@*peb!l1xq2@b^!7j7h'
+SECRET_KEY = 'fuf+0-a-0*+ix48%)6rx%hb8oh4@dgy(fh563$72ejw%7@dx@o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,8 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'games',
+    'touch_type.games',
+    'graphene_django',
 ]
+
+GRAPHENE = {
+    'SCHEMA': 'touch_type.schema.schema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

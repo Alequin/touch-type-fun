@@ -2,10 +2,17 @@
 
 Run the app
 
-- Run npm i in the terminal to download all required npm packages
+- pip install...
+  - django
+  - graphene-django
+  - django-filter
 
-- Run python manage.py migrate to complete required migrations for games app
+- Run npm i to download all required npm packages
 
-- Run npm start to run webpack
+- Run "python manage.py makemigrations" to prepare all migrations
 
-- Run python manage.py to start the server
+- Run "python manage.py migrate" to complete outstanding migrations
+
+- Run "npm start" to run webpack
+
+- Run "python manage.py runserver" to start the server

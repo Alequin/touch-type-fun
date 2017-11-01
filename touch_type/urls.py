@@ -1,9 +1,10 @@
-from django.conf.urls import include, url
+from django.conf.urls import url, include
 from django.contrib import admin
-from games import views
+
+from graphene_django.views import GraphQLView
+from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
-    url(r'^games/', include('games.urls', namespace='games', app_name='games')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.home_route, name="home_route"),
+    url(r'^graphql', csrf_exempt(GraphQLView.as_view(graphiql=True))),
 ]
