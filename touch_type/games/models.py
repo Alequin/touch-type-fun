@@ -41,4 +41,4 @@ class Record(models.Model):
     game = models.ForeignKey(Game, related_name='game')
 
     def __str__(self):
-        return self.game + ": " + str(time_in_seconds)
+        return str(self.game) + ": " + str(self.time_in_seconds)
