@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render } from 'react-dom'
 
-import css from "./importCss"
+import css from "./scss/Main.scss"
 
 import { Router, Route } from 'react-router'
 import { createBrowserHistory } from 'history'

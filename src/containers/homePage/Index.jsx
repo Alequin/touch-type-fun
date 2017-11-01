@@ -7,6 +7,8 @@ import gameViewPages from "./gameViewPages"
 import SelectorView from "./../selectorView"
 import Keyboard from "./../keyboard"
 
+import css from "./HomePage.scss"
+
 class HomePage extends React.Component {
 
   constructor(props){
