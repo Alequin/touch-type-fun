@@ -1,13 +1,14 @@
 # touch-type-test-app
 
-Run the app
+To run the app:
 
-- pip install...
-  - django
-  - graphene-django
-  - django-filter
+- python requirements:
+  - pip install django
+  - pip install graphene-django
+  - pip install django-filter
 
-- Run npm i to download all required npm packages
+
+- Run "npm install" to download all required node packages
 
 - Run "python manage.py makemigrations" to prepare all migrations
 
@@ -15,4 +16,4 @@ Run the app
 
 - Run "npm start" to run webpack
 
-- Run "python manage.py runserver" to start the server
+- Run "python manage.py runserver" to start the server (port 8000 by default)
