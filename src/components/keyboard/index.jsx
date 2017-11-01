@@ -1,11 +1,13 @@
 
 import React from 'react'
 
-import CharKey from './../key/charKey'
-import SpaceKey from './../key/spaceKey'
-import ShiftKey from './../key/shiftKey'
-import BackSpaceKey from './../key/backSpaceKey'
+import CharKey from './../key/CharKey'
+import SpaceKey from './../key/SpaceKey'
+import ShiftKey from './../key/ShiftKey'
+import BackSpaceKey from './../key/BackSpaceKey'
 import KeyboardHelper from "./KeyboardHelper"
+
+import css from './Keyboard.scss'
 
 class Keyboard extends React.Component {
 

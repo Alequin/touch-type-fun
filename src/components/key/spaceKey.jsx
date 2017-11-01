@@ -1,6 +1,6 @@
 import React from 'react'
-import Key from './key'
-import css from './spaceKey.scss'
+import Key from './Index'
+import css from './SpaceKey.scss'
 
 class SpaceKey extends Key {
   constructor(props){
