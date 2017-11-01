@@ -2,11 +2,11 @@
 
 .char-key-container{
   @include basic-key-container();
-  width: 34px;
+  width: 40px;
 
   .char-inner-border{
     @include basic-inner-border();
-    width: 30px;
+    width: 35px;
     margin-left: 0.4px;
   }
 }
