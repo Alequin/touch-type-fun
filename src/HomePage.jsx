@@ -1,29 +1,17 @@
 import React from 'react'
+import GraphQlQueryBuilder from './util/graphql/GraphQlQueryBuilder'
+import makeRequest from './util/graphql/GraphQlRequester'
 
 import Keyboard from './components/keyboard'
 
 class HomePage extends React.Component {
 
   componentDidMount(){
-    const query = `query{
-                      allGames{
-                        edges{
-                          node{
-                            id
-                            title
-                          }
-                        }
-                      }
-                    }`
-    fetch('/graphql', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query:  query}),
-    }).then((response) => {
-      return response.json()
-    }).then((json) => {
-      console.log(json.data);
-    })
+    const query = GraphQlQueryBuilder.getAllGamesByType("standard", ["id", "title"])
+    makeRequest(query)
+      .then((response) => {
+        console.log(response);
+      })
   }
 
   render() {
