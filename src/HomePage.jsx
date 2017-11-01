@@ -4,6 +4,27 @@ import Keyboard from './components/keyboard'
 
 class HomePage extends React.Component {
 
+  componentDidMount(){
+    const query = `query{
+                      allGames{
+                        edges{
+                          node{
+                            id
+                          }
+                        }
+                      }
+                    }`
+    fetch('/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query:  query}),
+    }).then((response) => {
+      return response.json()
+    }).then((json) => {
+      console.log(json.data);
+    })
+  }
+
   render() {
     return (
       <div className="home-page-container">
