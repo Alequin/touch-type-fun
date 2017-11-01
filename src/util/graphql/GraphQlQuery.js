@@ -1,7 +1,7 @@
 
 import makeRequest from "./GraphQlRequester"
 
-class GraphQlQueryBuilder{
+class GraphQlQuery{
 
   constructor(query){
     this.query = query
@@ -23,8 +23,8 @@ class GraphQlQueryBuilder{
         }
       }`
 
-    return new GraphQlQueryBuilder(query)
+    return new GraphQlQuery(query)
   }
 }
 
-export default GraphQlQueryBuilder
+export default GraphQlQuery

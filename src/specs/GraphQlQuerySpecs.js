@@ -1,5 +1,5 @@
 import assert from "assert"
-import GraphQlQueryBuilder from "./../util/graphql/GraphQlQueryBuilder"
+import GraphQlQuery from "./../util/graphql/GraphQlQuery"
 
 describe("GraphQlQueryBuilder", function(){
 
@@ -14,7 +14,7 @@ describe("GraphQlQueryBuilder", function(){
           }
         }
       }`
-      const result = GraphQlQueryBuilder.getAllGamesByType("standard", ["id", "title"])
+      const result = GraphQlQuery.getAllGamesByType("standard", ["id", "title"])
       assert.strictEqual(result.query, expected)
   })
 
