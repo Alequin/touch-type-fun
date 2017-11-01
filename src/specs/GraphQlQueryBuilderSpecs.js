@@ -3,7 +3,7 @@ import GraphQlQueryBuilder from "./../util/graphql/GraphQlQueryBuilder"
 
 describe("GraphQlQueryBuilder", function(){
 
-  it("should build a games by type query and insert the expected fields", function(){
+  it("should return GraphQlQuery object to query for all games by give type and fields", function(){
     const expected = `
       query{
         allGames(type: "standard"){
@@ -15,7 +15,7 @@ describe("GraphQlQueryBuilder", function(){
         }
       }`
       const result = GraphQlQueryBuilder.getAllGamesByType("standard", ["id", "title"])
-      assert.strictEqual(result, expected)
+      assert.strictEqual(result.query, expected)
   })
 
 })

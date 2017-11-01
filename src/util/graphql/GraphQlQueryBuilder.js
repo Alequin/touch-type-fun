@@ -1,8 +1,18 @@
 
+import makeRequest from "./GraphQlRequester"
+
 class GraphQlQueryBuilder{
 
+  constructor(query){
+    this.query = query
+  }
+
+  execute(){
+    return makeRequest(this.query)
+  }
+
   static getAllGamesByType(type, fields){
-    return (`
+    const query = `
       query{
         allGames(type: "${type}"){
           edges{
@@ -12,7 +22,8 @@ class GraphQlQueryBuilder{
           }
         }
       }`
-    )
+
+    return new GraphQlQueryBuilder(query)
   }
 }
 

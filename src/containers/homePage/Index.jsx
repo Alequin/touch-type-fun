@@ -1,7 +1,6 @@
 import React from "react"
 
 import GraphQlQueryBuilder from "./../../util/graphql/GraphQlQueryBuilder"
-import makeRequest from "./../../util/graphql/GraphQlRequester"
 import gameTypes from "./../../util/gameTypes"
 
 import gameViewPages from "./gameViewPages"
@@ -22,7 +21,7 @@ class HomePage extends React.Component {
 
   componentDidMount(){
     const query = GraphQlQueryBuilder.getAllGamesByType("standard", ["id", "title", "type"])
-    makeRequest(query)
+    query.execute()
       .then((response) => {
         console.log(response);
       })
