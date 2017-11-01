@@ -7,7 +7,7 @@ import Keyboard from './components/keyboard'
 class HomePage extends React.Component {
 
   componentDidMount(){
-    const query = GraphQlQueryBuilder.getAllGamesByType("standard", ["id", "title"])
+    const query = GraphQlQueryBuilder.getAllGamesByType("standard", ["id", "title", "type"])
     makeRequest(query)
       .then((response) => {
         console.log(response);
