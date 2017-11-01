@@ -8,7 +8,7 @@ import { Router, Route } from 'react-router'
 import { createBrowserHistory } from 'history'
 const history = createBrowserHistory({})
 
-import HomePage from './HomePage'
+import HomePage from './containers/homePage'
 
 const router = (
 		<Router history={history}>
