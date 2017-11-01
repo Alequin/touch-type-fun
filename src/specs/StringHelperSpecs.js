@@ -9,4 +9,22 @@ describe("StringHelper", function(){
     assert.strictEqual(result, expected)
   })
 
+  it("should return empty string is passed one", function(){
+    const expected = ""
+    const result = StringHelper.capitalise("")
+    assert.strictEqual(result, expected)
+  })
+
+  it("should return null if null is passed", function(){
+    const expected = null
+    const result = StringHelper.capitalise(null)
+    assert.strictEqual(result, expected)
+  })
+
+  it("should capitalise if only one letter is passed", function(){
+    const expected = "A"
+    const result = StringHelper.capitalise("a")
+    assert.strictEqual(result, expected)
+  })
+
 })
