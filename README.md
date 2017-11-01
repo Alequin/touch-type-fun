@@ -1,4 +1,4 @@
-# touch-type-test-app
+# Touch Type Fun
 
 To run the app:
 

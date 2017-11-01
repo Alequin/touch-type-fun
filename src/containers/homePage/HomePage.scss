@@ -1,0 +1,15 @@
+.home-page-container{
+  min-width: 700px;
+  margin: auto;
+  max-width: 1200px;
+
+  .frame{
+    min-width: 650px;
+    margin: 25px 0px 30px 10px;
+  }
+
+  .games-frame{
+    height: 350px;
+    box-shadow: 0px 0px 10px black;
+  }
+}
