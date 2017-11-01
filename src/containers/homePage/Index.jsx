@@ -5,7 +5,7 @@ import makeRequest from "./../../util/graphql/GraphQlRequester"
 import gameViewPages from "./gameViewPages"
 import gameTypes from "./../../util/gameTypes"
 import SelectorView from "./../selectorView"
-import Keyboard from "./../../components/keyboard"
+import Keyboard from "./../keyboard"
 
 class HomePage extends React.Component {
 

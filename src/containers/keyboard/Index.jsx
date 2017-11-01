@@ -1,10 +1,10 @@
 
 import React from 'react'
 
-import CharKey from './../key/CharKey'
-import SpaceKey from './../key/SpaceKey'
-import ShiftKey from './../key/ShiftKey'
-import BackSpaceKey from './../key/BackSpaceKey'
+import CharKey from './../../components/key/CharKey'
+import SpaceKey from './../../components/key/SpaceKey'
+import ShiftKey from './../../components/key/ShiftKey'
+import BackSpaceKey from './../../components/key/BackSpaceKey'
 import KeyboardHelper from "./KeyboardHelper"
 
 import css from './Keyboard.scss'
