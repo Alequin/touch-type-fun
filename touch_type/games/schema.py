@@ -2,7 +2,7 @@ from graphene import relay, ObjectType, AbstractType
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
-from games.models import Game, Record
+from .models import Game, Record
 
 class GameNode(DjangoObjectType):
     class Meta:
