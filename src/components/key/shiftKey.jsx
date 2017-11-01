@@ -1,5 +1,6 @@
 import React from 'react'
-import Key from './key'
+import Key from './Index'
+import css from './ShiftKey.scss'
 
 class CharKey extends Key {
   constructor(props){

@@ -1,0 +1,12 @@
+@import './key.scss';
+
+.char-key-container{
+  @include basic-key-container();
+  width: 34px;
+
+  .char-inner-border{
+    @include basic-inner-border();
+    width: 30px;
+    margin-left: 0.4px;
+  }
+}
