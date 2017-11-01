@@ -37,8 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'touch_type.games'
+    'touch_type.games',
+    'graphene_django',
 ]
+
+GRAPHENE = {
+    'SCHEMA': 'touch_type.schema.schema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
