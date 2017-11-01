@@ -1,6 +1,7 @@
 .menu-option-container{
   flex: 1;
   text-align: center;
+  cursor: pointer;
 
   h3{
     margin: 0;
@@ -9,10 +10,15 @@
   }
 
   .selected{
-    border-bottom: 2px solid blue;
+    border-bottom: 5px solid blue;
   }
 
   .deselected{
+    border-bottom: 5px solid transparent;
+    transition: border-bottom 0.5s;
 
+    &:hover{
+      border-bottom: 5px solid rgba(0,0,255,0.5);
+    }
   }
 }
