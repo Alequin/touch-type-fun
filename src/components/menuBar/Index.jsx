@@ -2,12 +2,11 @@ import React from "react"
 import MenuOption from "./MenuOption.jsx"
 import css from "./MenuBar.scss"
 
-import StringHelper from "./../../util/StringHelper"
-
 class MenuBar extends React.Component {
 
   constructor(props){
     super(props)
+    this.onClickMenuOption = this.onClickMenuOption.bind(this)
     this.state = this.buildInitalState(this.props.options)
   }
 
@@ -19,12 +18,27 @@ class MenuBar extends React.Component {
     return state
   }
 
+  onClickMenuOption(option){
+    const newState = Object.assign({}, this.state)
+    for(let key of Object.keys(newState)){
+      newState[key] = key === option
+    }
+    this.setState(newState)
+    this.props.onClick(option)
+  }
+
   renderMenuOptions(){
     const options = []
     let key = 0
     for(let option of this.props.options){
-      const text = StringHelper.capitalise(option)
-      options.push(<MenuOption key={key++} text={text} highlighted={this.state[option]}/>)
+      const text = option
+      options.push(
+        <MenuOption
+          key={key++}
+          text={text}
+          highlighted={this.state[option]}
+          onClick={this.onClickMenuOption}/>
+      )
     }
     return options
   }
