@@ -2,16 +2,16 @@ import React from "react"
 import MenuOption from "./MenuOption.jsx"
 import css from "./MenuBar.scss"
 
-import gameTypes from "./../../util/gameTypes.js"
 import StringHelper from "./../../util/StringHelper"
 
 class MenuBar extends React.Component {
 
   renderMenuOptions(){
     const options = []
-    for(let key of Object.keys(gameTypes)){
-      const text = StringHelper.capitalise(gameTypes[key])
-      options.push(<MenuOption key={key} text={text} />)
+    let key = 0
+    for(let option of this.props.options){
+      const text = StringHelper.capitalise(option)
+      options.push(<MenuOption key={key++} text={text} />)
     }
     return options
   }
