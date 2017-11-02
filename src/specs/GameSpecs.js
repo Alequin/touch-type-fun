@@ -51,8 +51,22 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result, expected)
   })
 
+  it("average score returns 0 if there are no scores", () => {
+    game.scores = []
+    const expected = 0
+    const result = game.averageScore()
+    assert.strictEqual(result, expected)
+  })
+
   it("can calculate top score", () => {
     const expected = 40
+    const result = game.topScore()
+    assert.strictEqual(result, expected)
+  })
+
+  it("top score returns 0 if there are no scores", () => {
+    game.scores = []
+    const expected = 0
     const result = game.topScore()
     assert.strictEqual(result, expected)
   })

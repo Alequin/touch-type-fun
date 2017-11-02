@@ -11,6 +11,7 @@ class Game{
   }
 
   averageScore(){
+    if(this.scores.length === 0) return 0
     const total = this.scores.reduce((total, value) => {
       return total += value
     })
