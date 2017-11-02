@@ -16,6 +16,14 @@ class Game{
     })
     return total / this.scores.length
   }
+
+  topScore(){
+    let max = 0
+    for(let num of this.scores){
+      if(num > max) max = num
+    }
+    return max
+  }
 }
 
 function mapScores(preMapScores){

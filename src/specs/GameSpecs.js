@@ -51,4 +51,10 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result, expected)
   })
 
+  it("can calculate top score", () => {
+    const expected = 40
+    const result = game.topScore()
+    assert.strictEqual(result, expected)
+  })
+
 })
