@@ -38,7 +38,7 @@ class Game(models.Model):
 
 class Record(models.Model):
     time_in_seconds = models.PositiveIntegerField()
-    game = models.ForeignKey(Game, related_name="game")
+    game = models.ForeignKey(Game, related_name="records")
 
     def __str__(self):
         return str(self.game) + ": " + str(self.time_in_seconds)
