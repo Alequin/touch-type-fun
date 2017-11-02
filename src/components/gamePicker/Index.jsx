@@ -14,8 +14,9 @@ class GamePicker extends React.Component{
 
   componentDidMount(){
     const type = this.props.gameType
-    const fields = ["id", "title", "description", "difficulty"]
-    const query = GraphQlQuery.getAllGamesByType(type, fields)
+    const gameFields = ["title", "description", "difficulty"]
+    const recordFields = ["timeInSeconds"]
+    const query = GraphQlQuery.getAllGamesByTypeWithRecords(type, gameFields, recordFields)
     query.execute()
       .then((response) => {
         const games = response.allGames.edges.map((game) => {
@@ -28,13 +29,19 @@ class GamePicker extends React.Component{
   render(){
     return (
       <div className="game-picker-container">
+
         <div className="arrow-container left-arrow">
           <img src="static/games/images/arrow_small_left.png" alt="arrow left"/>
         </div>
-        <div className="games"></div>
+
+        <div className="games">
+
+        </div>
+
         <div className="arrow-container right-arrow">
           <img src="static/games/images/arrow_small_right.png" alt="arrow right"/>
         </div>
+
       </div>
     )
   }
