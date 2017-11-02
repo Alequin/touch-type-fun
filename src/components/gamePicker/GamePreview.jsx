@@ -9,7 +9,7 @@ class GamePreview extends React.Component{
 
   render(){
     return (
-      <div className="game-preview-container">
+      <div className="game-preview-container" style={{"width": this.props.width}}>
         <h4>Title</h4>
         <p>
           Descripton: Lorem ipsum dolor sit amet, consectetur adipiscing elit,

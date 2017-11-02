@@ -8,8 +8,10 @@ class GamePicker extends React.Component{
 
   constructor(props){
     super(props)
+    this.maxGamesToShow = 3
     this.state = {
-      games: []
+      games: [],
+      gamesToShow: []
     }
   }
 
@@ -23,9 +25,41 @@ class GamePicker extends React.Component{
         const games = response.allGames.edges.map((game) => {
           return game.node
         })
-        console.log(games);
-        this.setState({games: games})
+        this.setState({
+          games: games,
+          gamesToShow: this.buildGamesToShowArray(games)
+        })
       })
+  }
+
+  buildGamesToShowArray(games){
+    const gamesToShowArray = []
+    const length = games.length
+    for(let j=0; j<length; j++){
+      if(j >= this.maxGamesToShow) break;
+      gamesToShowArray.push(j)
+    }
+    return gamesToShowArray
+  }
+
+  renderSelectedGames(){
+    const gamePreviews = this.state.gamesToShow.map((gameIndex) => {
+      const game = this.state.games[gameIndex]
+      return this.renderGamePreview(game.title, game.description)
+    })
+    return gamePreviews
+  }
+
+  renderGamePreview(title, description){
+    const width = (100/this.maxGamesToShow).toString() + "%"
+    return (
+      <GamePreview
+        key={title}
+        width={width}
+        title={title}
+        description={description}>
+      </GamePreview>
+    )
   }
 
   render(){
@@ -37,9 +71,7 @@ class GamePicker extends React.Component{
         </div>
 
         <div className="games">
-          <GamePreview />
-          <GamePreview />
-          <GamePreview />
+          {this.renderSelectedGames()}
         </div>
 
         <div className="arrow-container right-arrow">
