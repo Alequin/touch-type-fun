@@ -1,0 +1,16 @@
+.game-picker-container{
+    display: flex;
+    height: 100%;
+
+    .arrow-container{
+      flex: 1;
+      background-color: red;
+      height: 100%;
+    }
+
+    .games{
+      flex: 8;
+      background-color: black;
+      height: 100%;
+    }
+}
