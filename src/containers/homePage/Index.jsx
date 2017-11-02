@@ -38,12 +38,6 @@ class HomePage extends React.Component {
     }
   }
 
-  renderSelectorView(){
-    return (
-      <SelectorView />
-    )
-  }
-
   renderGame(){
     switch(this.state.selectedGame.type){
       case gameTypes.STANDARD:
@@ -62,7 +56,7 @@ class HomePage extends React.Component {
           <Keyboard />
         </div>
         <div className="frame games-frame">
-          {this.renderView()}
+          <SelectorView />
         </div>
       </div>
     )
