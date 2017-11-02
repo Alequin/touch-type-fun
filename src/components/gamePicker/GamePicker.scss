@@ -6,6 +6,12 @@
       flex: 5;
       height: 100%;
       opacity: 0.9;
+      cursor: pointer;
+      transition: background-color 0.15s;
+
+      &:hover{
+        background-color: rgba(0,0,255,0.15)
+      }
 
       img{
         $image-size: 50px;
@@ -13,6 +19,8 @@
         height: $image-size;
         padding: 124px 4px;
       }
+
+
     }
 
     .games{
