@@ -1,13 +1,16 @@
 .menu-option-container{
   flex: 1;
+  height: 100%;
   text-align: center;
   cursor: pointer;
 
   h3{
+    height: 100%;
+    line-height: 50px;
     margin: 0;
-    padding: 15px 5px;
     white-space: nowrap;
     text-transform: capitalize;
+    box-sizing: border-box;
   }
 
   .selected{
