@@ -26,7 +26,7 @@ describe("GraphQlQueryBuilder", function(){
         edges{
           node{
             id title
-            records{
+            scores{
               edges{
                 node{
                   timeInSeconds
@@ -37,7 +37,7 @@ describe("GraphQlQueryBuilder", function(){
         }
       }
     }`
-    const result = GraphQlQuery.getAllGamesByTypeWithRecords("standard", ["id", "title"], ["timeInSeconds"])
+    const result = GraphQlQuery.getAllGamesByTypeWithScores("standard", ["id", "title"], ["timeInSeconds"])
     assert.strictEqual(result.query, expected)
   })
 

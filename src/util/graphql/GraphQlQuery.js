@@ -25,17 +25,17 @@ class GraphQlQuery{
     return new GraphQlQuery(query)
   }
 
-  static getAllGamesByTypeWithRecords(type, gameFields, recordFields){
+  static getAllGamesByTypeWithScores(type, gameFields, scoreFields){
     const query = `
     query{
       allGames{
         edges{
           node{
             ${gameFields.join(" ")}
-            records{
+            scores{
               edges{
                 node{
-                  ${recordFields.join(" ")}
+                  ${scoreFields.join(" ")}
                 }
               }
             }

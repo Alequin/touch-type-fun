@@ -15,13 +15,14 @@ class GamePicker extends React.Component{
   componentDidMount(){
     const type = this.props.gameType
     const gameFields = ["title", "description", "difficulty"]
-    const recordFields = ["timeInSeconds"]
-    const query = GraphQlQuery.getAllGamesByTypeWithRecords(type, gameFields, recordFields)
+    const scoreFields = ["timeInSeconds"]
+    const query = GraphQlQuery.getAllGamesByTypeWithScores(type, gameFields, scoreFields)
     query.execute()
       .then((response) => {
         const games = response.allGames.edges.map((game) => {
           return game.node
         })
+        console.log(games);
         this.setState({games: games})
       })
   }
