@@ -1,6 +1,7 @@
 import React from 'react'
 import GraphQlQuery from "./../../util/graphql/GraphQlQuery.js"
-import GamePreview from "./GamePreview"
+import GamePreview from "./GamePreview.jsx"
+import Game from "./../../util/game/Game.js"
 
 import css from "./GamePicker.scss"
 
@@ -23,7 +24,7 @@ class GamePicker extends React.Component{
     query.execute()
       .then((response) => {
         const games = response.allGames.edges.map((game) => {
-          return game.node
+          return new Game(game.node)
         })
         console.log(games);
         this.setState({
@@ -46,20 +47,15 @@ class GamePicker extends React.Component{
   renderSelectedGames(){
     const gamePreviews = this.state.gamesToShow.map((gameIndex) => {
       const game = this.state.games[gameIndex]
-      return this.renderGamePreview(game.title, game.description)
+      return this.renderGamePreview(game)
     })
     return gamePreviews
   }
 
-  renderGamePreview(title, description){
+  renderGamePreview(game){
     const width = (100/this.maxGamesToShow).toString() + "%"
     return (
-      <GamePreview
-        key={title}
-        width={width}
-        title={title}
-        description={description}>
-      </GamePreview>
+      <GamePreview key={game.title} width={width} game={game}/>
     )
   }
 
