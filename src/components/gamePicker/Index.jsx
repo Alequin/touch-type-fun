@@ -1,5 +1,6 @@
 import React from 'react'
 import GraphQlQuery from "./../../util/graphql/GraphQlQuery.js"
+import GamePreview from "./GamePreview"
 
 import css from "./GamePicker.scss"
 
@@ -36,7 +37,9 @@ class GamePicker extends React.Component{
         </div>
 
         <div className="games">
-
+          <GamePreview />
+          <GamePreview />
+          <GamePreview />
         </div>
 
         <div className="arrow-container right-arrow">
