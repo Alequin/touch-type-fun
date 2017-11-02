@@ -29,8 +29,12 @@ class SelectorView extends React.Component {
   render() {
     return (
       <div className="selector-view-container">
+      <div className="menu-bar-frame">
         <MenuBar options={this.getMenuOptions()} onClick={this.onClickMenuBar}/>
+      </div>
+      <div className="game-picker-frame">
         <GamePicker gameType={this.state.gameType}/>
+      </div>
       </div>
     )
   }
