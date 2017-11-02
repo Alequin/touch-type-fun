@@ -17,7 +17,7 @@ describe("GraphQlQueryBuilder", function(){
       scores: {
         edges: [
           {node: {timeInSeconds: 20}},
-          {node: {timeInSeconds: 23}}
+          {node: {timeInSeconds: 40}}
         ]
       }
     }
@@ -31,7 +31,7 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result.description, "description")
     assert.strictEqual(result.type, "STANDARD")
     assert.strictEqual(result.difficulty, "SIMPLE")
-    assert.deepEqual(result.scores, [20, 23])
+    assert.deepEqual(result.scores, [20, 40])
   })
 
   it("can make game from graphql result object (no returned scores)", function(){
@@ -44,4 +44,11 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result.difficulty, "SIMPLE")
     assert.deepEqual(result.scores, [])
   })
+
+  it("can calculate average score", () => {
+    const expected = 30
+    const result = game.averageScore()
+    assert.strictEqual(result, expected)
+  })
+
 })

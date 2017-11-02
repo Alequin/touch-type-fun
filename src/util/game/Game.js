@@ -10,6 +10,12 @@ class Game{
     this.scores = mapScores(options.scores)
   }
 
+  averageScore(){
+    const total = this.scores.reduce((total, value) => {
+      return total += value
+    })
+    return total / this.scores.length
+  }
 }
 
 function mapScores(preMapScores){
