@@ -22,9 +22,30 @@ class GraphQlQuery{
           }
         }
       }`
-
     return new GraphQlQuery(query)
   }
+
+  static getAllGamesByTypeWithScores(type, gameFields, scoreFields){
+    const query = `
+    query{
+      allGames{
+        edges{
+          node{
+            ${gameFields.join(" ")}
+            scores{
+              edges{
+                node{
+                  ${scoreFields.join(" ")}
+                }
+              }
+            }
+          }
+        }
+      }
+    }`
+    return new GraphQlQuery(query)
+  }
+
 }
 
 export default GraphQlQuery

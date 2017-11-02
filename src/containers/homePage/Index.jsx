@@ -21,14 +21,6 @@ class HomePage extends React.Component {
     }
   }
 
-  componentDidMount(){
-    const query = GraphQlQuery.getAllGamesByType("standard", ["id", "title", "type"])
-    query.execute()
-      .then((response) => {
-        console.log(response);
-      })
-  }
-
   renderView(){
     switch(this.state.gameView){
       case gameViewPages.SELECTOR:
@@ -36,12 +28,6 @@ class HomePage extends React.Component {
       case gameViewPages.GAME:
         return this.renderGame()
     }
-  }
-
-  renderSelectorView(){
-    return (
-      <SelectorView />
-    )
   }
 
   renderGame(){
@@ -62,7 +48,7 @@ class HomePage extends React.Component {
           <Keyboard />
         </div>
         <div className="frame games-frame">
-          {this.renderView()}
+          <SelectorView />
         </div>
       </div>
     )

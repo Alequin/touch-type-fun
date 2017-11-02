@@ -2,7 +2,7 @@ from graphene import relay, ObjectType, AbstractType
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
-from .models import Game, Record
+from .models import Game, Score
 
 class GameNode(DjangoObjectType):
     class Meta:
@@ -11,9 +11,9 @@ class GameNode(DjangoObjectType):
         interfaces = (relay.Node,)
 
 
-class RecordNode(DjangoObjectType):
+class ScoreNode(DjangoObjectType):
     class Meta:
-        model = Record
+        model = Score
         filter_fields = ["game_id", "time_in_seconds"]
         interfaces = (relay.Node,)
 
@@ -22,5 +22,5 @@ class Query(AbstractType):
     game = relay.Node.Field(GameNode)
     all_games = DjangoFilterConnectionField(GameNode)
 
-    record = relay.Node.Field(RecordNode)
-    all_records = DjangoFilterConnectionField(RecordNode)
+    score = relay.Node.Field(ScoreNode)
+    all_scores = DjangoFilterConnectionField(ScoreNode)

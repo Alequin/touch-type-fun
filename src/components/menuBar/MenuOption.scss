@@ -1,17 +1,20 @@
 .menu-option-container{
   flex: 1;
+  height: 100%;
   text-align: center;
   cursor: pointer;
 
   h3{
+    height: 100%;
+    line-height: 50px;
     margin: 0;
-    padding: 15px 5px;
     white-space: nowrap;
     text-transform: capitalize;
+    box-sizing: border-box;
   }
 
   .selected{
-    border-bottom: 5px solid blue;
+    border-bottom: 5px solid rgba(0,255,0,0.8);
   }
 
   .deselected{
@@ -19,7 +22,7 @@
     transition: border-bottom 0.5s;
 
     &:hover{
-      border-bottom: 5px solid rgba(0,0,255,0.5);
+      border-bottom: 5px solid rgba(0,255,0,0.5);
     }
   }
 }
