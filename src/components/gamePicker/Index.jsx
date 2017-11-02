@@ -25,6 +25,7 @@ class GamePicker extends React.Component{
         const games = response.allGames.edges.map((game) => {
           return game.node
         })
+        console.log(games);
         this.setState({
           games: games,
           gamesToShow: this.buildGamesToShowArray(games)
