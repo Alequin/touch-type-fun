@@ -3,13 +3,20 @@
     height: 100%;
 
     .arrow-container{
-      flex: 1;
+      flex: 5;
       height: 100%;
       opacity: 0.9;
+
+      img{
+        $image-size: 50px;
+        width: $image-size;
+        height: $image-size;
+        padding: 124px 4px;
+      }
     }
 
     .games{
-      flex: 8;
+      flex: 90;
       background-color: black;
       height: 100%;
     }
