@@ -1,8 +1,26 @@
 import React from 'react'
+import GraphQlQuery from "./../../util/graphql/GraphQlQuery.js"
 
 import css from "./GamePicker.scss"
 
 class GamePicker extends React.Component{
+
+  constructor(props){
+    super(props)
+    this.state = {
+      games: []
+    }
+  }
+
+  componentDidMount(){
+    const type = this.props.gameType
+    const fields = ["id", "title", "description", "difficulty"]
+    const query = GraphQlQuery.getAllGamesByType(type, fields)
+    query.execute()
+      .then((response) => {
+        console.log(response);
+      })
+  }
 
   render(){
     return (

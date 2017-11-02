@@ -11,7 +11,7 @@ class SelectorView extends React.Component {
     super(props)
     this.onClickMenuBar = this.onClickMenuBar.bind(this)
     this.state = {
-      gamesType: gameTypes.STANDARD
+      gameType: gameTypes.STANDARD
     }
   }
 
