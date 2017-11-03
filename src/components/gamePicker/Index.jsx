@@ -59,12 +59,34 @@ class GamePicker extends React.Component{
     )
   }
 
+  renderLeftArrow(){
+    if(this.state.gamesToShow[0] !== 0){
+      return(<img src="static/games/images/arrow_small_left.png" alt="arrow left"/>)
+    }
+  }
+
+  renderRightArrow(){
+    const games = this.state.games
+    const gamesToShow = this.state.gamesToShow
+    if(gamesToShow[gamesToShow.length-1] !== games.length-1){
+      return(<img src="static/games/images/arrow_small_right.png" alt="arrow right"/>)
+    }
+  }
+
+  onClickLeftArrow(){
+
+  }
+
+  onClickRightArrow(){
+
+  }
+
   render(){
     return (
       <div className="game-picker-container">
 
         <div className="arrow-container left-arrow">
-          <img src="static/games/images/arrow_small_left.png" alt="arrow left"/>
+          {this.renderLeftArrow()}
         </div>
 
         <div className="games">
@@ -72,7 +94,7 @@ class GamePicker extends React.Component{
         </div>
 
         <div className="arrow-container right-arrow">
-          <img src="static/games/images/arrow_small_right.png" alt="arrow right"/>
+          {this.renderRightArrow()}
         </div>
 
       </div>
