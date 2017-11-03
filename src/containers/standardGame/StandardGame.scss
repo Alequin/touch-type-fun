@@ -1,0 +1,21 @@
+.standard-game-container{
+  display: flex;
+  padding: 30px;
+  height: 100;
+
+  .game-bar{
+    $width: 33%;
+    max-width: $width;
+    min-width: $width;
+    border: 1px solid black;
+  }
+
+  .game-frame{
+    overflow-x: hidden;
+    white-space: nowrap;
+
+    .char{
+      font-size: 20px;
+    }
+  }
+}
