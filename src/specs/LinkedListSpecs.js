@@ -13,4 +13,8 @@ describe("LinkedList", function(){
     assert(linkedList)
   })
 
+  it("can check size when no elements are present", () => {
+    assert.strictEqual(linkedList.count(), 0)
+  })
+
 })
