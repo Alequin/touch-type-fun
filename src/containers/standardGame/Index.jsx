@@ -21,8 +21,10 @@ class StandardGame extends React.Component {
     let elements = []
     for(let j=0; j<text.length; j++){
       const id = j.toString()
+      const char = text.charAt(j)
+      const className = char !== " " ? "char" : "char space-char"
       elements.push(
-        <span id={"char-span" + id} className="char" key={id}>{text.charAt(j)}</span>
+        <span id={"char-span" + id} className={className} key={id}>{text.charAt(j)}</span>
       )
     }
     return elements
@@ -61,6 +63,7 @@ class StandardGame extends React.Component {
     const span = document.getElementById("char-span" + position.toString())
     span.style.backgroundColor = backgroundColour
     span.style.color = fontColour
+    span.style.padding = "2px";
   }
 
   render() {
