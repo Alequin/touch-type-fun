@@ -30,7 +30,6 @@ class GamePicker extends React.Component{
         const games = response.allGames.edges.map((game) => {
           return new Game(game.node)
         })
-        console.log(games);
         this.setState({
           games: games,
           gamesToShow: this.buildGamesToShowArray(games)
@@ -51,8 +50,6 @@ class GamePicker extends React.Component{
   renderSelectedGames(){
     const gamePreviews = this.state.gamesToShow.map((gameIndex) => {
       const game = this.state.games[gameIndex]
-      console.log(gameIndex);
-      console.log(game);
       return this.renderGamePreview(game)
     })
     return gamePreviews

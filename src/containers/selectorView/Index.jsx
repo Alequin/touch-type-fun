@@ -23,17 +23,18 @@ class SelectorView extends React.Component {
   }
 
   onClickMenuBar(option){
-    this.setState({gamesType: option})
+    this.setState({gameType: option})
   }
 
   render() {
+    console.log(this.state.gameType);
     return (
       <div className="selector-view-container">
       <div className="menu-bar-frame">
         <MenuBar options={this.getMenuOptions()} onClick={this.onClickMenuBar}/>
       </div>
       <div className="game-picker-frame">
-        <GamePicker gameType={this.state.gameType}/>
+        <GamePicker key={this.state.gameType} gameType={this.state.gameType}/>
       </div>
       </div>
     )
