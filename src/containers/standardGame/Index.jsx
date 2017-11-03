@@ -13,6 +13,7 @@ class StandardGame extends React.Component {
 
   componentDidMount(){
     this.gameFrame = document.getElementsByClassName("game-frame")[0]
+    this.highlightCharAt(0)
     this.setOnKeyDownListener()
   }
 
@@ -31,9 +32,7 @@ class StandardGame extends React.Component {
     document.addEventListener('keydown', (event) => {
       this.deleteCurrentChar()
       const nextPosition = this.state.position+1
-      const nextSpan = document.getElementById("char-span" + (nextPosition).toString())
-      nextSpan.style.backgroundColor = "black"
-      nextSpan.style.color = "white"
+      this.highlightCharAt(nextPosition)
       this.setState({position: nextPosition})
     });
   }
@@ -41,6 +40,12 @@ class StandardGame extends React.Component {
   deleteCurrentChar(){
     const spanToDelete = document.getElementById("char-span" + this.state.position.toString())
     this.gameFrame.removeChild(spanToDelete)
+  }
+
+  highlightCharAt(position){
+    const span = document.getElementById("char-span" + position.toString())
+    span.style.backgroundColor = "black"
+    span.style.color = "white"
   }
 
   render() {
