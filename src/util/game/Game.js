@@ -5,8 +5,8 @@ class Game{
     this.id = options.id
     this.title = options.title
     this.description = options.description
-    this.type = options.type
-    this.difficulty = options.difficulty
+    this.type = options.type.toLowerCase()
+    this.difficulty = options.difficulty.toLowerCase()
     this.scores = mapScores(options.scores)
   }
 

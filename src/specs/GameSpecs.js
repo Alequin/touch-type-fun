@@ -29,8 +29,8 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result.id, "1")
     assert.strictEqual(result.title, "title")
     assert.strictEqual(result.description, "description")
-    assert.strictEqual(result.type, "STANDARD")
-    assert.strictEqual(result.difficulty, "SIMPLE")
+    assert.strictEqual(result.type, "standard")
+    assert.strictEqual(result.difficulty, "simple")
     assert.deepEqual(result.scores, [20, 40])
   })
 
@@ -40,8 +40,8 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result.id, "1")
     assert.strictEqual(result.title, "title")
     assert.strictEqual(result.description, "description")
-    assert.strictEqual(result.type, "STANDARD")
-    assert.strictEqual(result.difficulty, "SIMPLE")
+    assert.strictEqual(result.type, "standard")
+    assert.strictEqual(result.difficulty, "simple")
     assert.deepEqual(result.scores, [])
   })
 
