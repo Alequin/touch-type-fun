@@ -17,4 +17,13 @@ describe("LinkedList", function(){
     assert.strictEqual(linkedList.count(), 0)
   })
 
+  it("head is null on construction", () => {
+    assert.strictEqual(linkedList.head, null)
+  })
+
+  it("can add elements to linked list", () => {
+    linkedList.push(123)
+    assert.strictEqual(linkedList.count(), 1)
+  })
+
 })
