@@ -13,7 +13,7 @@ class StandardGame extends React.Component {
 
   componentDidMount(){
     this.gameFrame = document.getElementsByClassName("game-frame")[0]
-    this.highlightCharAt(0)
+    this.highlightCharAsNext(0)
     this.setOnKeyDownListener()
   }
 
@@ -30,10 +30,17 @@ class StandardGame extends React.Component {
 
   setOnKeyDownListener(){
     document.addEventListener('keydown', (event) => {
-      this.deleteCurrentChar()
-      const nextPosition = this.state.position+1
-      this.highlightCharAt(nextPosition)
-      this.setState({position: nextPosition})
+      const pressed = event.key
+      const currentChar = this.state.textToShow.charAt(this.state.position)
+      if(pressed === "Shift") return
+      if(pressed !== currentChar){
+        this.highlightCharAsError(this.state.position)
+      }else{
+        this.deleteCurrentChar()
+        const nextPosition = this.state.position+1
+        this.highlightCharAsNext(nextPosition)
+        this.setState({position: nextPosition})
+      }
     });
   }
 
@@ -42,10 +49,18 @@ class StandardGame extends React.Component {
     this.gameFrame.removeChild(spanToDelete)
   }
 
-  highlightCharAt(position){
+  highlightCharAsNext(position){
+    this.highlightCharAt(position, "white", "black")
+  }
+
+  highlightCharAsError(position){
+    this.highlightCharAt(position, "black", "red")
+  }
+
+  highlightCharAt(position, fontColour, backgroundColour){
     const span = document.getElementById("char-span" + position.toString())
-    span.style.backgroundColor = "black"
-    span.style.color = "white"
+    span.style.backgroundColor = backgroundColour
+    span.style.color = fontColour
   }
 
   render() {
