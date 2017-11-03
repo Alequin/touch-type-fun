@@ -6,6 +6,7 @@ import gameTypes from "./../../util/gameTypes"
 import gameViewPages from "./gameViewPages"
 import SelectorView from "./../selectorView"
 import Keyboard from "./../keyboard"
+import StandardGame from "./../standardGame"
 
 import css from "./HomePage.scss"
 
@@ -32,19 +33,18 @@ class HomePage extends React.Component {
   }
 
   renderGame(){
-    switch(this.state.selectedGame.type){
+    const game = this.state.selectedGame
+    switch(game.type){
       case gameTypes.STANDARD:
-        return this.renderStandardGame()
+        return <StandardGame game={game} />
     }
   }
 
-  renderStandardGame(){
-
-  }
-
   onClickPlay(game){
-    console.log(game);
-    console.log(game.type);
+    this.setState({
+      gameView: gameViewPages.GAME,
+      selectedGame: game
+    })
   }
 
   render() {
