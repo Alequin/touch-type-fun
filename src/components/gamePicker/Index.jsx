@@ -22,7 +22,7 @@ class GamePicker extends React.Component{
 
   componentDidMount(){
     const type = this.props.gameType
-    const gameFields = ["title", "description", "difficulty"]
+    const gameFields = ["title", "description", "type", "difficulty"]
     const scoreFields = ["timeInSeconds"]
     const query = GraphQlQuery.getAllGamesByTypeWithScores(type, gameFields, scoreFields)
     query.execute()
@@ -58,7 +58,7 @@ class GamePicker extends React.Component{
   renderGamePreview(game){
     const width = (100/this.maxGamesToShow).toString() + "%"
     return (
-      <GamePreview key={game.title} width={width} game={game}/>
+      <GamePreview key={game.title} width={width} game={game} onClickPlay={this.props.onClickPlay}/>
     )
   }
 

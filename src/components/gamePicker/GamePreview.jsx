@@ -5,6 +5,11 @@ class GamePreview extends React.Component{
 
   constructor(props){
     super(props)
+    this.onClickPlay = this.onClickPlay.bind(this)
+  }
+
+  onClickPlay(){
+    this.props.onClickPlay(this.props.game)
   }
 
   render(){
@@ -16,7 +21,7 @@ class GamePreview extends React.Component{
           <p>Best Time: {this.props.game.topScore()} Seconds</p>
           <p>Average Time: {this.props.game.averageScore()} Seconds</p>
         </div>
-        <button>Play</button>
+        <button onClick={this.onClickPlay}>Play</button>
       </div>
     )
   }

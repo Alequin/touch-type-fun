@@ -14,6 +14,7 @@ class HomePage extends React.Component {
   constructor(props){
     super(props)
     this.renderView = this.renderView.bind(this)
+    this.onClickPlay = this.onClickPlay.bind(this)
 
     this.state = {
       gameView: gameViewPages.SELECTOR,
@@ -24,7 +25,7 @@ class HomePage extends React.Component {
   renderView(){
     switch(this.state.gameView){
       case gameViewPages.SELECTOR:
-        return this.renderSelectorView()
+        return <SelectorView onClickPlay={this.onClickPlay}/>
       case gameViewPages.GAME:
         return this.renderGame()
     }
@@ -33,12 +34,17 @@ class HomePage extends React.Component {
   renderGame(){
     switch(this.state.selectedGame.type){
       case gameTypes.STANDARD:
-        return this.renderStandardGameView()
+        return this.renderStandardGame()
     }
   }
 
   renderStandardGame(){
 
+  }
+
+  onClickPlay(game){
+    console.log(game);
+    console.log(game.type);
   }
 
   render() {
@@ -48,7 +54,7 @@ class HomePage extends React.Component {
           <Keyboard />
         </div>
         <div className="frame games-frame">
-          <SelectorView />
+          {this.renderView()}
         </div>
       </div>
     )
