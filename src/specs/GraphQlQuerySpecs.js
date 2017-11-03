@@ -22,7 +22,7 @@ describe("GraphQlQueryBuilder", function(){
     by give type and fields`, function(){
     const expected = `
     query{
-      allGames{
+      allGames(type: "standard"){
         edges{
           node{
             id title
