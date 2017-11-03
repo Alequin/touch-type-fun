@@ -51,6 +51,13 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result, expected)
   })
 
+  it("average score rounds to 1 dp", () => {
+    game.scores = [20, 21.5]
+    const expected = 20.8
+    const result = game.averageScore()
+    assert.strictEqual(result, expected)
+  })
+
   it("average score returns 0 if there are no scores", () => {
     game.scores = []
     const expected = 0

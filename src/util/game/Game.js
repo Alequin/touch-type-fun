@@ -15,7 +15,8 @@ class Game{
     const total = this.scores.reduce((total, value) => {
       return total += value
     })
-    return total / this.scores.length
+    const average = total / this.scores.length
+    return Math.round(average * 10) / 10
   }
 
   topScore(){
