@@ -1,2 +1,3 @@
 node_modules
 touch_type/games/static/games/MainBundle*
+*.pyc
