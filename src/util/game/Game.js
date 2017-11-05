@@ -27,6 +27,17 @@ class Game{
     }
     return max
   }
+
+  getDifficultColour(){
+    switch(this.difficulty){
+      case "simple": return "#34F32B"
+      case "easy": return "#6AAB23"
+      case "normal": return "#8F7C1F"
+      case "hard": return "#B34D1A"
+      case "extreme": return "#EA0613"
+      default: return "transparent"
+    }
+  }
 }
 
 function mapScores(preMapScores){
