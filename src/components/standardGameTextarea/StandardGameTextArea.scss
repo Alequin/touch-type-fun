@@ -12,6 +12,11 @@
     padding: 7px;
     height: 100%;
 
+    .wide-span{
+      display: inline-block;
+      width: 50%;
+    }
+
     .char{
       font-size: 20px;
     }

@@ -22,6 +22,7 @@ class StandardGameTextArea extends React.Component {
 
   generateTextWithSpans(text){
     let elements = []
+    elements.push((<span className={"wide-span"} key={-1}></span>))
     for(let j=0; j<text.length; j++){
       const id = j.toString()
       const char = text.charAt(j)
