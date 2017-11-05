@@ -6,7 +6,7 @@ class StandardGameTextArea extends React.Component {
 
   constructor(props){
     super(props)
-    this.keyPressEvent = this.keyPressEvent.bind(this)
+    this.onKeyPress = this.onKeyPress.bind(this)
     this.state = {
       position: 0,
       gameStarted: false,
@@ -35,7 +35,7 @@ class StandardGameTextArea extends React.Component {
   }
 
   setOnKeyDownListener(){
-    document.addEventListener('keydown', this.keyPressEvent);
+    document.addEventListener('keydown', this.onKeyPress);
   }
 
   startGame(){
@@ -44,20 +44,23 @@ class StandardGameTextArea extends React.Component {
   }
 
   endGame(){
-    document.removeEventListener('keydown', this.keyPressEvent)
+    document.removeEventListener('keydown', this.onKeyPress)
     this.props.onEndGame()
   }
 
-  keyPressEvent(){
-    if(!this.state.gameStarted) this.startGame()
-    this.onKeyPress(event.key)
-  }
-
-  onKeyPress(pressed){
+  onKeyPress(event){
+    const key = event.key
     const currentChar = this.state.textToShow.charAt(this.state.position)
-    if(pressed === "Shift") return
-    if(pressed === currentChar) this.onCorrectKeyPress()
-    else this.onWrongKeyPress()
+    let hasGameStarted = this.state.gameStarted
+    if(!this.state.gameStarted && key === currentChar){
+      this.startGame()
+      hasGameStarted = true
+    }
+    if(hasGameStarted){
+      if(key === "Shift") return
+      if(key === currentChar) this.onCorrectKeyPress()
+      else this.onWrongKeyPress()
+    }
   }
 
   onCorrectKeyPress(){

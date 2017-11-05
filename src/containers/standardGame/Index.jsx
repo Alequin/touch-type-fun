@@ -140,7 +140,9 @@ class StandardGame extends React.Component {
         <div className="text-area-frame">
           {this.renderGameTextArea()}
         </div>
-        <p className="game-start-note">The game will start on the first key press</p>
+        <p className="game-start-note">
+          The game will start when the first letter is pressed
+        </p>
       </div>
     )
   }
