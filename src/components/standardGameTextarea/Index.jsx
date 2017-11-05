@@ -6,6 +6,7 @@ class StandardGameTextArea extends React.Component {
 
   constructor(props){
     super(props)
+    this.keyPressEvent = this.keyPressEvent.bind(this)
     this.state = {
       position: 0,
       gameStarted: false,
@@ -33,15 +34,22 @@ class StandardGameTextArea extends React.Component {
   }
 
   setOnKeyDownListener(){
-    document.addEventListener('keydown', (event) => {
-      if(!this.state.gameStarted) this.startGame()
-      this.onKeyPress(event.key)
-    });
+    document.addEventListener('keydown', this.keyPressEvent);
   }
 
   startGame(){
     this.props.onStartGame()
     this.setState({gameStarted: true})
+  }
+
+  endGame(){
+    document.removeEventListener('keydown', this.keyPressEvent)
+    this.props.onEndGame()
+  }
+
+  keyPressEvent(){
+    if(!this.state.gameStarted) this.startGame()
+    this.onKeyPress(event.key)
   }
 
   onKeyPress(pressed){
@@ -58,7 +66,7 @@ class StandardGameTextArea extends React.Component {
     this.deleteCurrentChar()
     const nextPosition = this.state.position+1
     if(nextPosition >= this.state.textToShow.length){
-      this.props.onFinishGame()
+      this.endGame()
     }else{
       this.highlightCurrentCharAsNext(nextPosition)
     }

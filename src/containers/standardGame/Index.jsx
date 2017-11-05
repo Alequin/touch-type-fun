@@ -53,7 +53,7 @@ class StandardGame extends React.Component {
         <StandardGameTextArea
           text={this.state.game.body}
           onStartGame={this.onStartGame}
-          onFinishGame={this.onFinishGame}/>
+          onEndGame={this.onFinishGame}/>
       )
     }else{
       component = (<div className="game-bar side-bar"></div>)
