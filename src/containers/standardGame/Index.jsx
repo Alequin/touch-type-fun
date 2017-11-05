@@ -35,7 +35,6 @@ class StandardGame extends React.Component {
   }
 
   onEachTick(seconds){
-    console.log(seconds);
     this.setState({secondsElapsed: seconds})
   }
 

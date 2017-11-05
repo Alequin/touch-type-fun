@@ -63,6 +63,13 @@ class Keyboard extends React.Component {
     }
   }
 
+  buildLetterKeyElements(letters){
+    const keys = letters.map((char) => {
+      return this.buildLetterKey(char)
+    })
+    return keys
+  }
+
   buildLetterKey(char){
     return (
       <CharKey
@@ -73,9 +80,9 @@ class Keyboard extends React.Component {
     )
   }
 
-  buildLetterKeyElements(letters){
-    const keys = letters.map((char) => {
-      return this.buildLetterKey(char)
+  buildSpecialKeyElements(specialChars){
+    const keys = specialChars.map((char) => {
+      return this.buildSpecialKey(char)
     })
     return keys
   }
@@ -88,13 +95,6 @@ class Keyboard extends React.Component {
         highlight={this.state.pressed[char]}
         letter={this.getSpecialChar(char)}/>
     )
-  }
-
-  buildSpecialKeyElements(specialChars){
-    const keys = specialChars.map((char) => {
-      return this.buildSpecialKey(char)
-    })
-    return keys
   }
 
   getLetter(char){
@@ -135,9 +135,9 @@ class Keyboard extends React.Component {
   }
 
   renderRowFour(){
-    const keyChars = ["z", "x", "c", "v", "b", "n", "m"]
     const leftShift = (<ShiftKey key={"shift-l"} highlight={this.state.shift.pressed} letter={"Shift"} keyId="key-shift"/>)
     let keys = [leftShift]
+    const keyChars = ["z", "x", "c", "v", "b", "n", "m"]
     for(let key of keyChars){
       keys.push(this.buildLetterKey(key))
     }

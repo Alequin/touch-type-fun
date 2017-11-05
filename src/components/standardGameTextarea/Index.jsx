@@ -15,7 +15,7 @@ class StandardGameTextArea extends React.Component {
 
   componentDidMount(){
     this.gameContainer = document.getElementsByClassName("standard-game-text-area-container")[0]
-    if(this.state.textToShow.length > 0) this.highlightCharAsNext(0)
+    if(this.state.textToShow.length > 0) this.highlightCurrentCharAsNext(0)
     this.setOnKeyDownListener()
   }
 
@@ -50,7 +50,7 @@ class StandardGameTextArea extends React.Component {
     if(pressed === currentChar){
       this.onCorrectKeyPress()
     }else{
-      this.highlightCharAsError(this.state.position)
+      this.highlightCurrentCharAsError(this.state.position)
     }
   }
 
@@ -60,7 +60,7 @@ class StandardGameTextArea extends React.Component {
     if(nextPosition >= this.state.textToShow.length){
       this.props.onFinishGame()
     }else{
-      this.highlightCharAsNext(nextPosition)
+      this.highlightCurrentCharAsNext(nextPosition)
     }
     this.setState({position: nextPosition})
   }
@@ -70,11 +70,11 @@ class StandardGameTextArea extends React.Component {
     this.gameContainer.removeChild(spanToDelete)
   }
 
-  highlightCharAsNext(position){
+  highlightCurrentCharAsNext(position){
     this.highlightCharAt(position, "white", "black")
   }
 
-  highlightCharAsError(position){
+  highlightCurrentCharAsError(position){
     this.highlightCharAt(position, "black", "red")
   }
 

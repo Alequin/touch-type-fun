@@ -110,12 +110,14 @@ class GamePicker extends React.Component{
         </div>
 
         <div className="arrow-frame">
+          
           <div className="arrow-container">
             {this.renderLeftArrow()}
           </div>
           <div className="arrow-container">
             {this.renderRightArrow()}
           </div>
+
         </div>
 
       </div>
