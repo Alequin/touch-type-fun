@@ -41,7 +41,11 @@ class StandardGameTextArea extends React.Component {
       }else{
         this.deleteCurrentChar()
         const nextPosition = this.state.position+1
-        this.highlightCharAsNext(nextPosition)
+        if(nextPosition >= this.state.textToShow.length){
+          this.props.onFinishGame()
+        }else{
+          this.highlightCharAsNext(nextPosition)
+        }
         this.setState({position: nextPosition})
       }
     });

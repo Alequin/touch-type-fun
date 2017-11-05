@@ -47,6 +47,7 @@ export default class Timer extends React.Component {
   }
 
   update() {
+    if(this.props.shouldStop) clearInterval(interval)
     let clock = this.state.clock
     clock += this.calculateOffset()
     const seconds = Math.floor(clock / 1000)
