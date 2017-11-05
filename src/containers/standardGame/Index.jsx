@@ -13,7 +13,7 @@ class StandardGame extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      game: new Game()
+      game: null
     }
   }
 
@@ -21,18 +21,27 @@ class StandardGame extends React.Component {
     const query = GraphQlQuery.getGameById(this.props.gameId, ["id", "title", "description", "body"])
     query.execute()
       .then((result) => {
-        console.log(new Game(result.game));
         this.setState({
-          game: new Game(result)
+          game: new Game(result.game)
         })
       })
+  }
+
+  renderTextArea(){
+    let component
+    if(this.state.game){
+      component = (<StandardGameTextArea text={this.state.game.body}/>)
+    }else{
+      component = (<div className="game-bar side-bar"></div>)
+    }
+    return component
   }
 
   render() {
     return (
       <div className="standard-game-container">
         <div className="game-bar side-bar"></div>
-        <StandardGameTextArea text={this.state.game.body}/>
+        {this.renderTextArea()}
         <div className="game-bar side-bar"></div>
       </div>
     )
