@@ -56,10 +56,10 @@ class GraphQlQuery{
     return new GraphQlQuery(query)
   }
 
-  static postNewScore(gameId, timeInSeconds){
+  static postNewScore(gameId, timeInSeconds, wordsPerMinute, errors){
     const query =`
     mutation{
-      createScore(gameId: "${gameId}", timeInSeconds: ${timeInSeconds}){
+      createScore(gameId: "${gameId}", timeInSeconds: ${timeInSeconds}, wordsPerMinute: ${wordsPerMinute}, errors: ${errors}){
         ok
       }
     }`

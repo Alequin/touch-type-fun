@@ -55,11 +55,11 @@ describe("GraphQlQueryBuilder", function(){
   it(`should return GraphQlQuery object to add new score`, function(){
     const expected =`
     mutation{
-      createScore(gameId: "gameId", timeInSeconds: 1000){
+      createScore(gameId: "gameId", timeInSeconds: 1000, wordsPerMinute: 50, errors: 10){
         ok
       }
     }`
-    const result = GraphQlQuery.postNewScore("gameId", 1000)
+    const result = GraphQlQuery.postNewScore("gameId", 1000, 50, 10)
     assert.strictEqual(result.query, expected)
   })
 
