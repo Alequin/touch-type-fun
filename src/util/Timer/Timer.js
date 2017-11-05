@@ -39,15 +39,19 @@ export default class Timer extends React.Component {
 
   reset() {
     let clockReset = 0
-    this.setState({clock: clockReset })
     let time = SecondsTohhmmss(clockReset / 1000)
-    this.setState({time: time })
+    this.setState({
+      clock: clockReset,
+      time: time,
+    })
   }
 
   update() {
     let clock = this.state.clock
     clock += this.calculateOffset()
-    let time = SecondsTohhmmss(clock / 1000)
+    const seconds = clock / 1000
+    let time = SecondsTohhmmss(seconds)
+    if(this.props.onUpdate) this.props.onUpdate(seconds)
     this.setState({
       clock: clock,
       time: time
