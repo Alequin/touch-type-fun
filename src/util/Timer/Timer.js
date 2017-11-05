@@ -12,7 +12,7 @@ export default class Timer extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { clock: 0, time: '00:00:00:00' }
+    this.state = { clock: 0, time: '00:00:00' }
   }
 
   componentDidMount() {
@@ -49,7 +49,7 @@ export default class Timer extends React.Component {
   update() {
     let clock = this.state.clock
     clock += this.calculateOffset()
-    const seconds = clock / 1000
+    const seconds = Math.floor(clock / 1000)
     let time = SecondsTohhmmss(seconds)
     if(this.props.onUpdate) this.props.onUpdate(seconds)
     this.setState({
