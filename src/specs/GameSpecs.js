@@ -78,4 +78,15 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result, expected)
   })
 
+  it("can construct game with no arguement given", () => {
+    const result = new Game()
+    assert.strictEqual(result.id, null)
+    assert.strictEqual(result.title, null)
+    assert.strictEqual(result.description, null)
+    assert.strictEqual(result.type, null)
+    assert.strictEqual(result.difficulty, null)
+    assert.deepEqual(result.scores, [])
+  })
+
+
 })

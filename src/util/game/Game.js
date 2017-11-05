@@ -1,12 +1,12 @@
 
 class Game{
 
-  constructor(options){
-    this.id = options.id
-    this.title = options.title
-    this.description = options.description
-    this.type = options.type.toLowerCase()
-    this.difficulty = options.difficulty.toLowerCase()
+  constructor(options = {}){
+    this.id = options.id || null
+    this.title = options.title || null
+    this.description = options.description || null
+    this.type = options.type ? options.type.toLowerCase() : null
+    this.difficulty = options.difficulty ? options.difficulty.toLowerCase() : null
     this.scores = mapScores(options.scores)
   }
 
