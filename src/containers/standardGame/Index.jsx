@@ -20,6 +20,7 @@ class StandardGame extends React.Component {
     this.onCorrectKeyPress = this.onCorrectKeyPress.bind(this)
     this.onWrongKeyPress = this.onWrongKeyPress.bind(this)
     this.onFinishGame = this.onFinishGame.bind(this)
+    this.onClickExitButton = this.onClickExitButton.bind(this)
     this.state = {
       game: null,
       wordsPerMinute: 0,
@@ -61,6 +62,11 @@ class StandardGame extends React.Component {
 
   onFinishGame(){
     this.setState({stopTimer: true})
+  }
+
+  onClickExitButton(){
+    console.log("exit");
+    this.props.exitGame()
   }
 
   renderHeader(){
@@ -128,11 +134,13 @@ class StandardGame extends React.Component {
     const isGameValid = this.state.game !== null
     return (
       <div className="standard-game-container">
+        <button className="exit-button" onClick={this.onClickExitButton}>X</button>
         {this.renderHeader()}
         {this.renderScoreBar()}
         <div className="text-area-frame">
           {this.renderGameTextArea()}
         </div>
+        <p className="game-start-note">The game will start on the first key press</p>
       </div>
     )
   }

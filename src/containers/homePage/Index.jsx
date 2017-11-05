@@ -16,6 +16,7 @@ class HomePage extends React.Component {
     super(props)
     this.renderView = this.renderView.bind(this)
     this.onClickPlay = this.onClickPlay.bind(this)
+    this.onExitGame = this.onExitGame.bind(this)
 
     this.state = {
       gameView: gameViewPages.SELECTOR,
@@ -32,11 +33,15 @@ class HomePage extends React.Component {
     }
   }
 
+  onExitGame(){
+    this.setState({gameView: gameViewPages.SELECTOR})
+  }
+
   renderGame(){
     const game = this.state.selectedGame
     switch(game.type){
       case gameTypes.STANDARD:
-        return <StandardGame gameId={game.id} />
+        return <StandardGame gameId={game.id} exitGame={this.onExitGame}/>
     }
   }
 
