@@ -16,9 +16,11 @@ class StandardGame extends React.Component {
     super(props)
     this.onEachTick = this.onEachTick.bind(this)
     this.onStartGame = this.onStartGame.bind(this)
+    this.onWrongKeyPress = this.onWrongKeyPress.bind(this)
     this.onFinishGame = this.onFinishGame.bind(this)
     this.state = {
       game: null,
+      errors: 0,
       secondsElapsed: 0,
       gameStarted: false,
       stopTimer: false
@@ -42,6 +44,11 @@ class StandardGame extends React.Component {
 
   onStartGame(){
     this.setState({gameStarted: true})
+  }
+
+  onWrongKeyPress(){
+    const newErrorCount = this.state.errors + 1
+    this.setState({errors: newErrorCount})
   }
 
   onFinishGame(){
@@ -73,6 +80,11 @@ class StandardGame extends React.Component {
   }
 
   renderScoreBar(){
+    let errorPercent = ""
+    if(this.state.game){
+      const errorsAsDecimal = this.state.errors/this.state.game.body.length
+      errorPercent = Math.floor(errorsAsDecimal*100)
+    }
     return (
       <div className="score-bar-container top-bar">
         <div className="top-bar-element">
@@ -85,7 +97,7 @@ class StandardGame extends React.Component {
           <p>WPM: 10</p>
         </div>
         <div className="top-bar-element">
-          <p>Errors: 1/10</p>
+          <p>Errors: {this.state.errors.toString()} ({`${errorPercent}%`})</p>
         </div>
       </div>
     )
@@ -97,10 +109,10 @@ class StandardGame extends React.Component {
         <StandardGameTextArea
           text={this.state.game.body}
           onStartGame={this.onStartGame}
+          onWrongKeyPress={this.onWrongKeyPress}
           onEndGame={this.onFinishGame}/>
       )
     }
-
   }
 
   render() {
