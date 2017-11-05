@@ -68,7 +68,7 @@ class StandardGameTextArea extends React.Component {
     }else{
       this.highlightCurrentCharAsNext(nextPosition)
     }
-    if(this.props.onCorrectKeyPress) this.props.onCorrectKeyPress()
+    if(this.props.onCorrectKeyPress) this.props.onCorrectKeyPress(nextPosition)
     this.setState({position: nextPosition})
   }
 

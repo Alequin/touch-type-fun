@@ -4,6 +4,7 @@ import GraphQlQuery from "./../../util/graphql/GraphQlQuery"
 import Game from "./../../util/game/Game"
 import Timer from './../../util/timer/Timer.js'
 import StringHelper from './../../util/StringHelper.js'
+import calcWordsPerMinute from './../../util/CalculateWordsPerMinute.js'
 
 import StandardGameTextArea from "./../../components/standardGameTextArea"
 
@@ -21,7 +22,7 @@ class StandardGame extends React.Component {
     this.onFinishGame = this.onFinishGame.bind(this)
     this.state = {
       game: null,
-      wordsPerMinute: 0
+      wordsPerMinute: 0,
       errors: 0,
       secondsElapsed: 0,
       gameStarted: false,
@@ -49,7 +50,8 @@ class StandardGame extends React.Component {
   }
 
   onCorrectKeyPress(totalKeysPressed){
-
+    const wpm = calcWordsPerMinute(totalKeysPressed, this.state.secondsElapsed)
+    this.setState({wordsPerMinute: wpm})
   }
 
   onWrongKeyPress(){
@@ -100,7 +102,7 @@ class StandardGame extends React.Component {
             shouldStop={this.state.stopTimer}/>
         </div>
         <div className="top-bar-element">
-          <p>WPM: 10</p>
+          <p>WPM: {this.state.wordsPerMinute.toString()}</p>
         </div>
         <div className="top-bar-element">
           <p>Errors: {this.state.errors.toString()} ({`${errorPercent}%`})</p>
