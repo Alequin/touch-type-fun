@@ -12,6 +12,7 @@ describe("GraphQlQueryBuilder", function(){
       id: "1",
       title: "title",
       description: "description",
+      body: "i'm the body",
       type: "STANDARD",
       difficulty: "SIMPLE",
       scores: {
@@ -29,6 +30,7 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result.id, "1")
     assert.strictEqual(result.title, "title")
     assert.strictEqual(result.description, "description")
+    assert.strictEqual(result.body, "i'm the body")
     assert.strictEqual(result.type, "standard")
     assert.strictEqual(result.difficulty, "simple")
     assert.deepEqual(result.scores, [20, 40])
@@ -40,6 +42,7 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result.id, "1")
     assert.strictEqual(result.title, "title")
     assert.strictEqual(result.description, "description")
+    assert.strictEqual(result.body, "i'm the body")
     assert.strictEqual(result.type, "standard")
     assert.strictEqual(result.difficulty, "simple")
     assert.deepEqual(result.scores, [])
@@ -83,10 +86,9 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result.id, null)
     assert.strictEqual(result.title, null)
     assert.strictEqual(result.description, null)
+    assert.strictEqual(result.body, null)
     assert.strictEqual(result.type, null)
     assert.strictEqual(result.difficulty, null)
     assert.deepEqual(result.scores, [])
   })
-
-
 })

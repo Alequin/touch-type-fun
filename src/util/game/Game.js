@@ -5,6 +5,7 @@ class Game{
     this.id = options.id || null
     this.title = options.title || null
     this.description = options.description || null
+    this.body = options.body || null
     this.type = options.type ? options.type.toLowerCase() : null
     this.difficulty = options.difficulty ? options.difficulty.toLowerCase() : null
     this.scores = mapScores(options.scores)
