@@ -16,7 +16,7 @@ class GameNode(DjangoObjectType):
 class ScoreNode(DjangoObjectType):
     class Meta:
         model = Score
-        filter_fields = ["game_id", "time_in_seconds"]
+        filter_fields = ["game_id", "time_in_seconds", "words_per_minute", "errors"]
         interfaces = (relay.Node,)
 
 class CreateScore(graphene.Mutation):
