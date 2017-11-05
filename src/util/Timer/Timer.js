@@ -51,7 +51,7 @@ export default class Timer extends React.Component {
     clock += this.calculateOffset()
     const seconds = Math.floor(clock / 1000)
     let time = SecondsTohhmmss(seconds)
-    if(this.props.onUpdate) this.props.onUpdate(seconds)
+    if(this.props.onEachTick) this.props.onEachTick(seconds)
     this.setState({
       clock: clock,
       time: time
