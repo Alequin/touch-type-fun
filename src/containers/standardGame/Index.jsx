@@ -25,7 +25,8 @@ class StandardGame extends React.Component {
   }
 
   componentDidMount(){
-    const query = GraphQlQuery.getGameById(this.props.gameId, ["id", "title", "description", "body"])
+    const fields = ["id", "title", "description", "body", "difficulty"]
+    const query = GraphQlQuery.getGameById(this.props.gameId, fields)
     query.execute()
       .then((result) => {
         this.setState({
@@ -49,8 +50,9 @@ class StandardGame extends React.Component {
   renderLeftBar(isGameValid){
     if(isGameValid){
       return (
-        <div className="game-bar side-bar">
-          <h2>{this.state.game.title}</h2>
+        <div className="game-bar left-bar">
+          <h1>{this.state.game.title}</h1>
+          <h2>{this.state.game.difficulty}</h2>
           <p>{this.state.game.description}</p>
         </div>
       )
@@ -76,7 +78,7 @@ class StandardGame extends React.Component {
   renderRightBar(isGameValid){
     if(isGameValid){
       return (
-        <div className="game-bar side-bar">
+        <div className="game-bar">
           <Timer options={{delay: 1000}}
             onEachTick={this.onEachTick}
             shouldTimerRun={this.state.gameStarted}
@@ -89,7 +91,7 @@ class StandardGame extends React.Component {
   }
 
   renderEmptyBar(){
-    return (<div className="game-bar side-bar"></div>)
+    return (<div className="game-bar"></div>)
   }
 
   render() {
