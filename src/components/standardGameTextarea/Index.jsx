@@ -13,7 +13,7 @@ class StandardGameTextArea extends React.Component {
   }
 
   componentDidMount(){
-    this.gameContainer = document.getElementsByClassName("game-container")[0]
+    this.gameContainer = document.getElementsByClassName("standard-game-text-area-container")[0]
     if(this.state.textToShow.length > 0) this.highlightCharAsNext(0)
     this.setOnKeyDownListener()
   }
