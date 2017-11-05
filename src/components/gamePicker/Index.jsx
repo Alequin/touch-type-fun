@@ -22,7 +22,7 @@ class GamePicker extends React.Component{
 
   componentDidMount(){
     const type = this.props.gameType
-    const gameFields = ["title", "description", "type", "difficulty"]
+    const gameFields = ["id", "title", "description", "type", "difficulty"]
     const scoreFields = ["timeInSeconds"]
     const query = GraphQlQuery.getAllGamesByTypeWithScores(type, gameFields, scoreFields)
     query.execute()
