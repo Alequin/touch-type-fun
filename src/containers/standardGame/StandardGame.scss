@@ -1,9 +1,32 @@
 .standard-game-container{
   display: flex;
   padding: 30px;
-  height: 100;
+  color: rgba(0,0,0,0.7);
 
-  .left-bar{
+  .side-bar{
     text-align: center;
+    padding: 10px;
+
+    .title{
+      margin-top: 5px;
+    }
+
+    .difficulty{
+      margin: 5px;
+      display: inline-block;
+      padding: 10px 25px;
+      border-radius: 10px;
+    }
+
+
+  }
+
+  .right-bar{
+    padding-top: 50px;
+
+    .right-bar-text{
+      font-size: 175%;
+      margin: 10px;
+    }
   }
 }

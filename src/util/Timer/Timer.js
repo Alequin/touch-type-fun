@@ -73,7 +73,6 @@ export default class Timer extends React.Component {
   render() {
     const timerStyle = {
       margin: "0px",
-      padding: "2em"
     };
 
     const secondsStyles = {
@@ -81,7 +80,6 @@ export default class Timer extends React.Component {
       fontWeight: "200",
       lineHeight: "1.5",
       margin: "0px",
-      color: "#666"
     };
 
     return (

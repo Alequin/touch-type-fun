@@ -49,10 +49,15 @@ class StandardGame extends React.Component {
 
   renderLeftBar(isGameValid){
     if(isGameValid){
+      const difficultyColour = this.state.game.getDifficultColour()
       return (
-        <div className="game-bar left-bar">
-          <h1>{this.state.game.title}</h1>
-          <h2>{this.state.game.difficulty}</h2>
+        <div className="game-bar side-bar">
+          <h1 className="title">{this.state.game.title}</h1>
+          <h2
+            className="difficulty"
+            style={{"backgroundColor": difficultyColour}}>
+              Difficulty: {this.state.game.difficulty}
+          </h2>
           <p>{this.state.game.description}</p>
         </div>
       )
@@ -78,11 +83,13 @@ class StandardGame extends React.Component {
   renderRightBar(isGameValid){
     if(isGameValid){
       return (
-        <div className="game-bar">
+        <div className="side-bar right-bar game-bar">
           <Timer options={{delay: 1000}}
             onEachTick={this.onEachTick}
             shouldTimerRun={this.state.gameStarted}
             shouldStop={this.state.stopTimer}/>
+          <p className="right-bar-text">WPM: 10</p>
+          <p className="right-bar-text">Errors: 1/10</p>
         </div>
       )
     }else{
@@ -91,7 +98,7 @@ class StandardGame extends React.Component {
   }
 
   renderEmptyBar(){
-    return (<div className="game-bar"></div>)
+    return (<div className="side-bar"></div>)
   }
 
   render() {
