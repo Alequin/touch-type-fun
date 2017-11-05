@@ -56,6 +56,16 @@ class GraphQlQuery{
     return new GraphQlQuery(query)
   }
 
+  static postNewScore(gameId, timeInSeconds){
+    const query =`
+    mutation{
+      createScore(gameId: "${gameId}", timeInSeconds: ${timeInSeconds}){
+        ok
+      }
+    }`
+    return new GraphQlQuery(query)
+  }
+
 }
 
 export default GraphQlQuery
