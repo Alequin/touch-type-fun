@@ -38,6 +38,8 @@ class Game(models.Model):
 
 class Score(models.Model):
     time_in_seconds = models.PositiveIntegerField()
+    words_per_minute = models.PositiveIntegerField()
+    errors = models.PositiveIntegerField()
     game = models.ForeignKey(Game, related_name="scores")
 
     def __str__(self):
