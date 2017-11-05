@@ -16,10 +16,12 @@ class StandardGame extends React.Component {
     super(props)
     this.onEachTick = this.onEachTick.bind(this)
     this.onStartGame = this.onStartGame.bind(this)
+    this.onCorrectKeyPress = this.onCorrectKeyPress.bind(this)
     this.onWrongKeyPress = this.onWrongKeyPress.bind(this)
     this.onFinishGame = this.onFinishGame.bind(this)
     this.state = {
       game: null,
+      wordsPerMinute: 0
       errors: 0,
       secondsElapsed: 0,
       gameStarted: false,
@@ -44,6 +46,10 @@ class StandardGame extends React.Component {
 
   onStartGame(){
     this.setState({gameStarted: true})
+  }
+
+  onCorrectKeyPress(totalKeysPressed){
+
   }
 
   onWrongKeyPress(){
@@ -109,6 +115,7 @@ class StandardGame extends React.Component {
         <StandardGameTextArea
           text={this.state.game.body}
           onStartGame={this.onStartGame}
+          onCorrectKeyPress={this.onCorrectKeyPress}
           onWrongKeyPress={this.onWrongKeyPress}
           onEndGame={this.onFinishGame}/>
       )
