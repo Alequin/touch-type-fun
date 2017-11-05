@@ -44,6 +44,8 @@ class StandardGameTextArea extends React.Component {
   }
 
   endGame(){
+    const textArea = document.getElementsByClassName("standard-game-text-area-frame")[0]
+    textArea.style.border = "3px solid green"
     document.removeEventListener('keydown', this.onKeyPress)
     this.props.onEndGame()
   }
