@@ -91,4 +91,44 @@ describe("GraphQlQueryBuilder", function(){
     assert.strictEqual(result.difficulty, null)
     assert.deepEqual(result.scores, [])
   })
+
+  it("can get colour value based on game difficulty", () => {
+    let expected
+    let result
+
+    game.difficulty = "simple"
+    expected = "#34F32B"
+    result = game.getDifficultColour()
+    assert.strictEqual(result, expected)
+
+    game.difficulty = "easy"
+    expected = "#6AAB23"
+    result = game.getDifficultColour()
+    assert.strictEqual(result, expected)
+
+    game.difficulty = "normal"
+    expected = "#8F7C1F"
+    result = game.getDifficultColour()
+    assert.strictEqual(result, expected)
+
+    game.difficulty = "hard"
+    expected = "#B34D1A"
+    result = game.getDifficultColour()
+    assert.strictEqual(result, expected)
+
+    game.difficulty = "extreme"
+    expected = "#EA0613"
+    result = game.getDifficultColour()
+    assert.strictEqual(result, expected)
+
+    game.difficulty = "not a colour"
+    expected = "transparent"
+    result = game.getDifficultColour()
+    assert.strictEqual(result, expected)
+
+    game.difficulty = null
+    expected = "transparent"
+    result = game.getDifficultColour()
+    assert.strictEqual(result, expected)
+  })
 })
