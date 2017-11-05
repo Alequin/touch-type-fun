@@ -36,7 +36,7 @@ class HomePage extends React.Component {
     const game = this.state.selectedGame
     switch(game.type){
       case gameTypes.STANDARD:
-        return <StandardGame game={game} />
+        return <StandardGame gameId={game.id} />
     }
   }
 
