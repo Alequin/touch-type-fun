@@ -25,6 +25,16 @@ class GraphQlQuery{
     return new GraphQlQuery(query)
   }
 
+  static getGameById(id, fields){
+    const query = `
+    query{
+      game(id: "${id}"){
+        ${fields.join(" ")}
+      }
+    }`
+    return new GraphQlQuery(query)
+  }
+
   static getAllGamesByTypeWithScores(type, gameFields, scoreFields){
     const query = `
     query{

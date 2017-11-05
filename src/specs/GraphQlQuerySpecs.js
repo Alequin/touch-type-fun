@@ -18,6 +18,17 @@ describe("GraphQlQueryBuilder", function(){
       assert.strictEqual(result.query, expected)
   })
 
+  it("should return GraphQlQuery object to query for a games by ID and given fields", function(){
+    const expected = `
+    query{
+      game(id: "this is an id"){
+        id title
+      }
+    }`
+    const result = GraphQlQuery.getGameById("this is an id", ["id", "title"])
+    assert.strictEqual(result.query, expected)
+  })
+
   it(`should return GraphQlQuery object to query for all games, including associated records,
     by give type and fields`, function(){
     const expected = `
