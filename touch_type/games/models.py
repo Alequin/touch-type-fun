@@ -9,9 +9,9 @@ class Game(models.Model):
     ENDLESS = "endless"
     WHACK_A_MOLE = "whack-a-mole"
     TYPE = (
-        (STANDARD, "Standard"),
-        (ENDLESS, "Endless"),
-        (WHACK_A_MOLE, "Whack-a-mole"),
+        (STANDARD, "standard"),
+        (ENDLESS, "endless"),
+        (WHACK_A_MOLE, "whack-a-mole"),
     )
 
     SIMPLE = "simple"
@@ -20,11 +20,11 @@ class Game(models.Model):
     HARD = "hard"
     EXTREME = "extreme"
     DIFFICULTY = (
-        (SIMPLE, "Simple"),
-        (EASY, "Easy"),
-        (MEDIUM, "Medium"),
-        (HARD, "Hard"),
-        (EXTREME, "Extreme"),
+        (SIMPLE, "simple"),
+        (EASY, "easy"),
+        (MEDIUM, "medium"),
+        (HARD, "hard"),
+        (EXTREME, "extreme"),
     )
 
     title = models.CharField(max_length=63)
@@ -38,6 +38,8 @@ class Game(models.Model):
 
 class Score(models.Model):
     time_in_seconds = models.PositiveIntegerField()
+    words_per_minute = models.PositiveIntegerField()
+    errors = models.PositiveIntegerField()
     game = models.ForeignKey(Game, related_name="scores")
 
     def __str__(self):

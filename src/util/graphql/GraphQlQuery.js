@@ -25,10 +25,20 @@ class GraphQlQuery{
     return new GraphQlQuery(query)
   }
 
+  static getGameById(id, fields){
+    const query = `
+    query{
+      game(id: "${id}"){
+        ${fields.join(" ")}
+      }
+    }`
+    return new GraphQlQuery(query)
+  }
+
   static getAllGamesByTypeWithScores(type, gameFields, scoreFields){
     const query = `
     query{
-      allGames{
+      allGames(type: "${type}"){
         edges{
           node{
             ${gameFields.join(" ")}
@@ -41,6 +51,16 @@ class GraphQlQuery{
             }
           }
         }
+      }
+    }`
+    return new GraphQlQuery(query)
+  }
+
+  static postNewScore(gameId, timeInSeconds, wordsPerMinute, errors){
+    const query =`
+    mutation{
+      createScore(gameId: "${gameId}", timeInSeconds: ${timeInSeconds}, wordsPerMinute: ${wordsPerMinute}, errors: ${errors}){
+        ok
       }
     }`
     return new GraphQlQuery(query)

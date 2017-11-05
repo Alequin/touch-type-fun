@@ -22,7 +22,7 @@ class GamePicker extends React.Component{
 
   componentDidMount(){
     const type = this.props.gameType
-    const gameFields = ["title", "description", "difficulty"]
+    const gameFields = ["id", "title", "description", "type", "difficulty"]
     const scoreFields = ["timeInSeconds"]
     const query = GraphQlQuery.getAllGamesByTypeWithScores(type, gameFields, scoreFields)
     query.execute()
@@ -30,7 +30,6 @@ class GamePicker extends React.Component{
         const games = response.allGames.edges.map((game) => {
           return new Game(game.node)
         })
-        console.log(games);
         this.setState({
           games: games,
           gamesToShow: this.buildGamesToShowArray(games)
@@ -51,8 +50,6 @@ class GamePicker extends React.Component{
   renderSelectedGames(){
     const gamePreviews = this.state.gamesToShow.map((gameIndex) => {
       const game = this.state.games[gameIndex]
-      console.log(gameIndex);
-      console.log(game);
       return this.renderGamePreview(game)
     })
     return gamePreviews
@@ -61,7 +58,7 @@ class GamePicker extends React.Component{
   renderGamePreview(game){
     const width = (100/this.maxGamesToShow).toString() + "%"
     return (
-      <GamePreview key={game.title} width={width} game={game}/>
+      <GamePreview key={game.title} width={width} game={game} onClickPlay={this.props.onClickPlay}/>
     )
   }
 
@@ -113,12 +110,14 @@ class GamePicker extends React.Component{
         </div>
 
         <div className="arrow-frame">
+          
           <div className="arrow-container">
             {this.renderLeftArrow()}
           </div>
           <div className="arrow-container">
             {this.renderRightArrow()}
           </div>
+
         </div>
 
       </div>

@@ -6,6 +6,7 @@ import gameTypes from "./../../util/gameTypes"
 import gameViewPages from "./gameViewPages"
 import SelectorView from "./../selectorView"
 import Keyboard from "./../keyboard"
+import StandardGame from "./../standardGame"
 
 import css from "./HomePage.scss"
 
@@ -13,7 +14,10 @@ class HomePage extends React.Component {
 
   constructor(props){
     super(props)
+    
     this.renderView = this.renderView.bind(this)
+    this.onClickPlay = this.onClickPlay.bind(this)
+    this.onExitGame = this.onExitGame.bind(this)
 
     this.state = {
       gameView: gameViewPages.SELECTOR,
@@ -24,21 +28,29 @@ class HomePage extends React.Component {
   renderView(){
     switch(this.state.gameView){
       case gameViewPages.SELECTOR:
-        return this.renderSelectorView()
+        return <SelectorView onClickPlay={this.onClickPlay}/>
       case gameViewPages.GAME:
         return this.renderGame()
     }
   }
 
+  onExitGame(){
+    this.setState({gameView: gameViewPages.SELECTOR})
+  }
+
   renderGame(){
-    switch(this.state.selectedGame.type){
+    const game = this.state.selectedGame
+    switch(game.type){
       case gameTypes.STANDARD:
-        return this.renderStandardGameView()
+        return <StandardGame gameId={game.id} exitGame={this.onExitGame}/>
     }
   }
 
-  renderStandardGame(){
-
+  onClickPlay(game){
+    this.setState({
+      gameView: gameViewPages.GAME,
+      selectedGame: game
+    })
   }
 
   render() {
@@ -48,7 +60,7 @@ class HomePage extends React.Component {
           <Keyboard />
         </div>
         <div className="frame games-frame">
-          <SelectorView />
+          {this.renderView()}
         </div>
       </div>
     )

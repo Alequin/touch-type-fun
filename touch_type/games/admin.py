@@ -6,7 +6,7 @@ from django.contrib import admin
 from .models import Game, Score
 
 class GameAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('id', 'title',)
 
 admin.site.register(Game, GameAdmin)
 

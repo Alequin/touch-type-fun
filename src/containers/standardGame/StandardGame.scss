@@ -1,0 +1,36 @@
+.standard-game-container{
+  color: rgba(0,0,0,0.7);
+
+  .exit-button{
+    position: absolute;
+    border: none;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+  }
+
+  .top-bar{
+    display: flex;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+
+
+    .top-bar-element{
+      flex: 1;
+      h2, p{
+        font-size: 175%;
+        margin: 0;
+      }
+    }
+  }
+
+  .text-area-frame{
+    padding: 10px;
+  }
+
+  .game-start-note{
+    text-align: center;
+    margin: 0;
+  }
+}
