@@ -36,19 +36,23 @@ class StandardGameTextArea extends React.Component {
       const pressed = event.key
       const currentChar = this.state.textToShow.charAt(this.state.position)
       if(pressed === "Shift") return
-      if(pressed !== currentChar){
-        this.highlightCharAsError(this.state.position)
+      if(pressed === currentChar){
+        this.onCorrectKeyPress()
       }else{
-        this.deleteCurrentChar()
-        const nextPosition = this.state.position+1
-        if(nextPosition >= this.state.textToShow.length){
-          this.props.onFinishGame()
-        }else{
-          this.highlightCharAsNext(nextPosition)
-        }
-        this.setState({position: nextPosition})
+        this.highlightCharAsError(this.state.position)
       }
     });
+  }
+
+  onCorrectKeyPress(){
+    this.deleteCurrentChar()
+    const nextPosition = this.state.position+1
+    if(nextPosition >= this.state.textToShow.length){
+      this.props.onFinishGame()
+    }else{
+      this.highlightCharAsNext(nextPosition)
+    }
+    this.setState({position: nextPosition})
   }
 
   deleteCurrentChar(){
