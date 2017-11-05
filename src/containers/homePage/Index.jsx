@@ -14,27 +14,7 @@ class HomePage extends React.Component {
 
   constructor(props){
     super(props)
-
-    const query = `
-    mutation{
-      createScore(gameId: "R2FtZU5vZGU6Mg==", timeInSeconds: 1000){
-        ok
-      }
-    }
-    `
-
-    fetch('/graphql', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query:  query}),
-    }).then((response) => {
-      return response.json()
-    }).then((json) => {
-      console.log(json);
-    }).catch((err) => {
-      console.log(err);
-    })
-
+    
     this.renderView = this.renderView.bind(this)
     this.onClickPlay = this.onClickPlay.bind(this)
     this.onExitGame = this.onExitGame.bind(this)

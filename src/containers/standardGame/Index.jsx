@@ -61,6 +61,8 @@ class StandardGame extends React.Component {
   }
 
   onFinishGame(){
+    const mutation = GraphQlQuery.postNewScore(this.state.game.id, this.state.secondsElapsed)
+    mutation.execute()
     this.setState({stopTimer: true})
   }
 
