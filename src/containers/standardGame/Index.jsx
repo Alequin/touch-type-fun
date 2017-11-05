@@ -14,10 +14,12 @@ class StandardGame extends React.Component {
   constructor(props){
     super(props)
     this.onEachTick = this.onEachTick.bind(this)
+    this.onStartGame = this.onStartGame.bind(this)
     this.onFinishGame = this.onFinishGame.bind(this)
     this.state = {
       game: null,
       secondsElapsed: 0,
+      gameStarted: false,
       stopTimer: false
     }
   }
@@ -37,15 +39,23 @@ class StandardGame extends React.Component {
     this.setState({secondsElapsed: seconds})
   }
 
+  onStartGame(){
+    this.setState({gameStarted: true})
+  }
+
   onFinishGame(){
-    console.log("game over. Your time was: ", this.state.secondsElapsed);
     this.setState({stopTimer: true})
   }
 
   renderTextArea(){
     let component
     if(this.state.game){
-      component = (<StandardGameTextArea text={this.state.game.body} onFinishGame={this.onFinishGame}/> )
+      component = (
+        <StandardGameTextArea
+          text={this.state.game.body}
+          onStartGame={this.onStartGame}
+          onFinishGame={this.onFinishGame}/>
+      )
     }else{
       component = (<div className="game-bar side-bar"></div>)
     }
@@ -57,7 +67,10 @@ class StandardGame extends React.Component {
     return (
       <div className="standard-game-container">
         <div className="game-bar side-bar">
-          <Timer options={OPTIONS} onEachTick={this.onEachTick} shouldStop={this.state.stopTimer}/>
+          <Timer options={OPTIONS}
+            onEachTick={this.onEachTick}
+            shouldTimerRun={this.state.gameStarted}
+            shouldStop={this.state.stopTimer}/>
         </div>
         {this.renderTextArea()}
         <div className="game-bar side-bar"></div>

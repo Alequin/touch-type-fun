@@ -15,8 +15,12 @@ export default class Timer extends React.Component {
     this.state = { clock: 0, time: '00:00:00' }
   }
 
-  componentDidMount() {
-    this.play()
+  componentDidUpdate() {
+    if(this.props.shouldTimerRun){
+      this.play()
+    } else{
+      this.pause()
+    }
   }
 
   componentWillUnmount() {

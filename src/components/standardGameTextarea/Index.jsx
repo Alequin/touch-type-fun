@@ -8,6 +8,7 @@ class StandardGameTextArea extends React.Component {
     super(props)
     this.state = {
       position: 0,
+      gameStarted: false,
       textToShow: this.props.text || ""
     }
   }
@@ -33,15 +34,24 @@ class StandardGameTextArea extends React.Component {
 
   setOnKeyDownListener(){
     document.addEventListener('keydown', (event) => {
-      const pressed = event.key
-      const currentChar = this.state.textToShow.charAt(this.state.position)
-      if(pressed === "Shift") return
-      if(pressed === currentChar){
-        this.onCorrectKeyPress()
-      }else{
-        this.highlightCharAsError(this.state.position)
-      }
+      if(!this.state.gameStarted) this.startGame()
+      this.onKeyPress(event.key)
     });
+  }
+
+  startGame(){
+    this.props.onStartGame()
+    this.setState({gameStarted: true})
+  }
+
+  onKeyPress(pressed){
+    const currentChar = this.state.textToShow.charAt(this.state.position)
+    if(pressed === "Shift") return
+    if(pressed === currentChar){
+      this.onCorrectKeyPress()
+    }else{
+      this.highlightCharAsError(this.state.position)
+    }
   }
 
   onCorrectKeyPress(){
