@@ -23,13 +23,20 @@ class CreateScore(graphene.Mutation):
     class Arguments:
         game_id = graphene.String()
         time_in_seconds = graphene.Int()
+        words_per_minute = graphene.Int()
+        errors = graphene.Int()
 
     ok = graphene.Boolean()
 
-    def mutate(self, info, game_id, time_in_seconds):
+    def mutate(self, info, game_id, time_in_seconds, words_per_minute, errors):
         real_game_id = from_global_id(game_id)[1]
         game = Game.objects.get(id=real_game_id)
-        score = Score(game=game, time_in_seconds=time_in_seconds)
+        score = Score(
+            game=game,
+            time_in_seconds=time_in_seconds,
+            words_per_minute=words_per_minute,
+            errors=errors
+        )
         score.save()
         ok = True
         return CreateScore(ok=ok)
