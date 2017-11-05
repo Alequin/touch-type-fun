@@ -1,32 +1,23 @@
 .standard-game-container{
-  display: flex;
-  padding: 30px;
   color: rgba(0,0,0,0.7);
 
-  .side-bar{
-    text-align: center;
+  .top-bar{
+    display: flex;
     padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid black;
 
-    .title{
-      margin-top: 5px;
+    .top-bar-element{
+      flex: 1;
+      h2, p{
+        font-weight: normal;
+        font-size: 175%;
+        margin: 0;
+      }
     }
-
-    .difficulty{
-      margin: 5px;
-      display: inline-block;
-      padding: 10px 25px;
-      border-radius: 10px;
-    }
-
-
   }
 
-  .right-bar{
-    padding-top: 50px;
-
-    .right-bar-text{
-      font-size: 175%;
-      margin: 10px;
-    }
+  .text-area-frame{
+    padding: 10px;
   }
 }

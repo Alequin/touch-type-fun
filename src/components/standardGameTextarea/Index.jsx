@@ -95,7 +95,7 @@ class StandardGameTextArea extends React.Component {
 
   render() {
     return (
-      <div className="standard-game-text-area-frame game-bar">
+      <div className="standard-game-text-area-frame">
         <div className="standard-game-text-area-container">
           {this.generateTextWithSpans(this.state.textToShow)}
         </div>

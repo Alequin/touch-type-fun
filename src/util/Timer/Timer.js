@@ -76,7 +76,7 @@ export default class Timer extends React.Component {
     };
 
     const secondsStyles = {
-      fontSize: "200%",
+      fontSize: "175%",
       fontWeight: "200",
       lineHeight: "1.5",
       margin: "0px",

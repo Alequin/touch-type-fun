@@ -3,6 +3,7 @@ import React from "react"
 import GraphQlQuery from "./../../util/graphql/GraphQlQuery"
 import Game from "./../../util/game/Game"
 import Timer from './../../util/timer/Timer.js'
+import StringHelper from './../../util/StringHelper.js'
 
 import StandardGameTextArea from "./../../components/standardGameTextArea"
 
@@ -47,67 +48,65 @@ class StandardGame extends React.Component {
     this.setState({stopTimer: true})
   }
 
-  renderLeftBar(isGameValid){
-    if(isGameValid){
-      const difficultyColour = this.state.game.getDifficultColour()
-      return (
-        <div className="game-bar side-bar">
-          <h1 className="title">{this.state.game.title}</h1>
-          <h2
-            className="difficulty"
-            style={{"backgroundColor": difficultyColour}}>
-              Difficulty: {this.state.game.difficulty}
-          </h2>
-          <p>{this.state.game.description}</p>
-        </div>
-      )
-    }else{
-      return this.renderEmptyBar()
+  renderHeader(){
+    let title = ""
+    let difficulty = ""
+    if(this.state.game){
+      title = StringHelper.capitalise(this.state.game.title)
+      difficulty = this.state.game.difficulty
     }
+    return (
+      <div className="header-container top-bar">
+        <div className="top-bar-element">
+          <h2>{title}</h2>
+        </div>
+        <div className="top-bar-element">
+          <p>Difficulty: {difficulty}</p>
+        </div>
+      </div>
+    )
   }
 
-  renderTextArea(isGameValid){
-    let component
-    if(isGameValid){
+  renderScoreBar(){
+    return (
+      <div className="score-bar-container top-bar">
+        <div className="top-bar-element">
+          <Timer options={{delay: 1000}}
+            onEachTick={this.onEachTick}
+            shouldTimerRun={this.state.gameStarted}
+            shouldStop={this.state.stopTimer}/>
+        </div>
+        <div className="top-bar-element">
+          <p>WPM: 10</p>
+        </div>
+        <div className="top-bar-element">
+          <p>Errors: 1/10</p>
+        </div>
+      </div>
+    )
+  }
+
+  renderGameTextArea(){
+    if(this.state.game){
       return (
         <StandardGameTextArea
           text={this.state.game.body}
           onStartGame={this.onStartGame}
           onEndGame={this.onFinishGame}/>
       )
-    }else{
-      return this.renderEmptyBar()
     }
-  }
 
-  renderRightBar(isGameValid){
-    if(isGameValid){
-      return (
-        <div className="side-bar right-bar game-bar">
-          <Timer options={{delay: 1000}}
-            onEachTick={this.onEachTick}
-            shouldTimerRun={this.state.gameStarted}
-            shouldStop={this.state.stopTimer}/>
-          <p className="right-bar-text">WPM: 10</p>
-          <p className="right-bar-text">Errors: 1/10</p>
-        </div>
-      )
-    }else{
-      return this.renderEmptyBar()
-    }
-  }
-
-  renderEmptyBar(){
-    return (<div className="side-bar"></div>)
   }
 
   render() {
     const isGameValid = this.state.game !== null
     return (
       <div className="standard-game-container">
-        {this.renderLeftBar(isGameValid)}
-        {this.renderTextArea(isGameValid)}
-        {this.renderRightBar(isGameValid)}
+        {this.renderHeader()}
+        {this.renderScoreBar()}
+        <div className="text-area-frame">
+          {this.renderGameTextArea()}
+        </div>
       </div>
     )
   }
