@@ -51,9 +51,14 @@ class StandardGame extends React.Component {
   renderHeader(){
     let title = ""
     let difficulty = ""
+    let style = {}
     if(this.state.game){
       title = StringHelper.capitalise(this.state.game.title)
       difficulty = this.state.game.difficulty
+      style = {
+        "textDecoration": "underline",
+        "textDecorationColor": this.state.game.getDifficultColour()
+      }
     }
     return (
       <div className="header-container top-bar">
@@ -61,7 +66,7 @@ class StandardGame extends React.Component {
           <h2>{title}</h2>
         </div>
         <div className="top-bar-element">
-          <p>Difficulty: {difficulty}</p>
+          <p style={style}>Difficulty: {difficulty}</p>
         </div>
       </div>
     )

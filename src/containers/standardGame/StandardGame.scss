@@ -3,14 +3,13 @@
 
   .top-bar{
     display: flex;
+    font-weight: bold;
     padding: 10px;
     text-align: center;
-    border-bottom: 1px solid black;
 
     .top-bar-element{
       flex: 1;
       h2, p{
-        font-weight: normal;
         font-size: 175%;
         margin: 0;
       }
