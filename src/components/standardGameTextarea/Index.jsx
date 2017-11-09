@@ -1,6 +1,5 @@
 import React from "react"
 import css from "./StandardGameTextArea.scss"
-import gameBarCss from "./../../scss/GameBar.scss"
 
 class StandardGameTextArea extends React.Component {
 

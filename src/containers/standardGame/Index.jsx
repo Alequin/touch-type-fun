@@ -10,7 +10,6 @@ import calcWordsPerMinute from './../../util/CalculateWordsPerMinute.js'
 import StandardGameTextArea from "./../../components/standardGameTextArea"
 
 import css from "./StandardGame.scss"
-import gameBarCss from "./../../scss/GameBar.scss"
 
 class StandardGame extends React.Component {
 
