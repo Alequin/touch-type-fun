@@ -1,12 +1,11 @@
-@import './key.scss';
+@import './_key.scss';
 
+$width: 55px;
 .shift-key-container{
-  @include basic-key-container();
-  width: 55px;
+  @include basic-key-container($width);
 
   .shift-inner-border{
-    @include basic-inner-border();
+    @include basic-inner-border($width - 4);
     width: 51px;
-    margin-left: 0.4px;
   }
 }
