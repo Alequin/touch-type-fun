@@ -1,13 +1,11 @@
-@import './key.scss';
+@import './_key.scss';
 
+$width: 150px;
 .space-key-container{
-  @include basic-key-container();
-  width: 150px;
+  @include basic-key-container($width);
 
   .space-inner-border{
-    @include basic-inner-border();
-    width: 146px;
-    margin-left: 0.4px;
+    @include basic-inner-border($width - 4);
     margin-top: 0.6px;
   }
 }

@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from 'prop-types'
 
 import GraphQlQuery from "./../../util/graphql/GraphQlQuery"
 import Game from "./../../util/game/Game"
@@ -9,7 +10,6 @@ import calcWordsPerMinute from './../../util/CalculateWordsPerMinute.js'
 import StandardGameTextArea from "./../../components/standardGameTextArea"
 
 import css from "./StandardGame.scss"
-import gameBarCss from "./../../scss/GameBar.scss"
 
 class StandardGame extends React.Component {
 
@@ -65,7 +65,7 @@ class StandardGame extends React.Component {
     const seconds = this.state.secondsElapsed
     const wordsPerMinute = this.state.wordsPerMinute
     const errors = this.state.errors
-    
+
     const mutation = GraphQlQuery.postNewScore(id, seconds, wordsPerMinute, errors)
     mutation.execute()
     this.setState({stopTimer: true})
@@ -154,5 +154,10 @@ class StandardGame extends React.Component {
     )
   }
 }
+
+StandardGame.propTypes = {
+  gameId: PropTypes.string,
+  exitGame: PropTypes.func
+};
 
 export default StandardGame;

@@ -1,0 +1,23 @@
+@mixin basic-key-container($width) {
+  width: $width;
+  box-sizing: border-box;
+  z-index: -1;
+  height: 40px;
+  border-radius: 5px;
+  margin: 3px;
+}
+
+@mixin basic-inner-border($width) {
+  position: relative;
+  width: $width;
+  height: 35px;
+  padding: 4px;
+  left: 1px;
+  margin-left: 0.4px;
+  z-index: 1;
+  line-height: 25px;
+  font-family: roboto-mono;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 5px;
+}

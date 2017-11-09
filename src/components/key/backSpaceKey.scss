@@ -1,12 +1,10 @@
-@import './key.scss';
+@import './_key.scss';
 
+$width: 50px;
 .back-space-key-container{
-  @include basic-key-container();
-  width: 50px;
+  @include basic-key-container($width);
 
   .back-space-inner-border{
-    @include basic-inner-border();
-    width: 46px;
-    margin-left: 0.4px;
+    @include basic-inner-border($width - 4);
   }
 }
