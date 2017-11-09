@@ -14,7 +14,7 @@ class HomePage extends React.Component {
 
   constructor(props){
     super(props)
-    
+
     this.renderView = this.renderView.bind(this)
     this.onClickPlay = this.onClickPlay.bind(this)
     this.onExitGame = this.onExitGame.bind(this)
@@ -67,4 +67,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+export default HomePage

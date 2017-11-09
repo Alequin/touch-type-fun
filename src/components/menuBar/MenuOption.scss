@@ -1,3 +1,9 @@
+@import "./../../scss/color.scss";
+
+@mixin border-bottom($opacity){
+  border-bottom: 5px solid rgba($main-green, $opacity);
+}
+
 .menu-option-container{
   flex: 1;
   height: 100%;
@@ -14,7 +20,7 @@
   }
 
   .selected{
-    border-bottom: 5px solid rgba(0,255,0,0.8);
+    @include border-bottom(0.8);
   }
 
   .deselected{
@@ -22,7 +28,7 @@
     transition: border-bottom 0.5s;
 
     &:hover{
-      border-bottom: 5px solid rgba(0,255,0,0.5);
+      @include border-bottom(0.5);
     }
   }
 }
