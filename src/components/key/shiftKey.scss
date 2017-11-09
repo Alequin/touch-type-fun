@@ -6,6 +6,5 @@ $width: 55px;
 
   .shift-inner-border{
     @include basic-inner-border($width - 4);
-    width: 51px;
   }
 }
